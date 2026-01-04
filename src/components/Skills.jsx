@@ -1,27 +1,63 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { AnimatedFolder } from './ui/3d-folder'
+import { Code, Globe, Layers, Database, Wrench } from 'lucide-react'
 
 const Skills = React.memo(function Skills() {
-  const technicalSkills = [
+  // Technical skills data with skillicons.dev icons
+  // Using individual icon URLs for each skill
+  const getSkillIconUrl = (iconId) => `https://skillicons.dev/icons?i=${iconId}&theme=light`
+
+  const technicalSkillFolders = [
     {
-      category: '💻 Programming Languages',
-      items: ['Python', 'Java', 'C', 'Dart', '.NET/C#']
+      title: 'Programming',
+      icon: <Code className="w-5 h-5" />,
+      projects: [
+        { id: 'c', title: 'C', image: getSkillIconUrl('c') },
+        { id: 'java', title: 'Java', image: getSkillIconUrl('java') },
+        { id: 'python', title: 'Python', image: getSkillIconUrl('py') },
+        { id: 'dart', title: 'Dart', image: getSkillIconUrl('dart') },
+        { id: 'csharp', title: 'C#', image: getSkillIconUrl('cs') },
+      ]
     },
     {
-      category: '🌐 Web Development',
-      items: ['HTML', 'CSS']
+      title: 'Web Dev',
+      icon: <Globe className="w-5 h-5" />,
+      projects: [
+        { id: 'html', title: 'HTML', image: getSkillIconUrl('html') },
+        { id: 'css', title: 'CSS', image: getSkillIconUrl('css') },
+      ]
     },
     {
-      category: '⚙️ Frameworks',
-      items: ['Django', '.NET', 'Flutter', 'React']
+      title: 'Frameworks',
+      icon: <Layers className="w-5 h-5" />,
+      projects: [
+        { id: 'django', title: 'Django', image: getSkillIconUrl('django') },
+        { id: 'dotnet', title: '.NET', image: getSkillIconUrl('dotnet') },
+        { id: 'flutter', title: 'Flutter', image: getSkillIconUrl('flutter') },
+        { id: 'react', title: 'React', image: getSkillIconUrl('react') },
+      ]
     },
     {
-      category: '🗄️ Database',
-      items: ['SQL', 'PostgreSQL']
+      title: 'Database',
+      icon: <Database className="w-5 h-5" />,
+      projects: [
+        { id: 'sql', title: 'MySQL', image: getSkillIconUrl('mysql') },
+        { id: 'postgresql', title: 'PostgreSQL', image: getSkillIconUrl('postgres') },
+      ]
     },
     {
-      category: '🛠️ Tools & IDEs',
-      items: ['Git', 'GitHub', 'Android Studio', 'VS Code', 'Visual Studio 2022', 'Linux', 'Windows']
+      title: 'Tools & IDEs',
+      icon: <Wrench className="w-5 h-5" />,
+      projects: [
+        { id: 'git', title: 'Git', image: getSkillIconUrl('git') },
+        { id: 'github', title: 'GitHub', image: getSkillIconUrl('github') },
+        { id: 'vscode', title: 'VS Code', image: getSkillIconUrl('vscode') },
+        { id: 'androidstudio', title: 'Android Studio', image: getSkillIconUrl('androidstudio') },
+        { id: 'vs2022', title: 'Visual Studio', image: getSkillIconUrl('visualstudio') },
+        { id: 'linux', title: 'Linux', image: getSkillIconUrl('linux') },
+        { id: 'windows', title: 'Windows', image: getSkillIconUrl('windows') },
+      ]
     },
   ]
 
@@ -62,7 +98,7 @@ const Skills = React.memo(function Skills() {
       y: 0,
       opacity: 1,
       scale: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         ease: [0.6, -0.05, 0.01, 0.99]
       },
@@ -82,13 +118,13 @@ const Skills = React.memo(function Skills() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-frost-text mb-6"
           >
-            Skills & <motion.span 
+            Skills & <motion.span
               className="gradient-text"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
               }}
@@ -96,72 +132,38 @@ const Skills = React.memo(function Skills() {
               Expertise
             </motion.span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             variants={itemVariants}
             className="text-frost-text-secondary text-lg mb-12 max-w-2xl"
           >
             A comprehensive showcase of my technical abilities, soft skills, certifications, and competitive achievements.
           </motion.p>
 
-          {/* Technical Skills */}
+          {/* Technical Skills with 3D Folders */}
           <motion.div variants={itemVariants} className="mb-12">
-            <h3 className="text-2xl font-bold text-frost-text mb-6 flex items-center gap-2">
+            <h3 className="text-2xl font-bold text-frost-text mb-8 flex items-center gap-2">
               <span>💻</span>
               Technical Skills
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {technicalSkills.map((skillGroup, groupIndex) => (
+            <div className="flex flex-wrap justify-center gap-6">
+              {technicalSkillFolders.map((folder, index) => (
                 <motion.div
-                  key={groupIndex}
-                  initial={{ opacity: 0, y: 50, scale: 0.8, rotateX: -15 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+                  key={folder.title}
+                  initial={{ opacity: 0, y: 50, scale: 0.8 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: groupIndex * 0.15,
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.1,
                     ease: [0.6, -0.05, 0.01, 0.99]
                   }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -10,
-                    rotateY: 5,
-                    transition: { duration: 0.3 }
-                  }}
-                  className="glass-effect rounded-2xl p-6 group cursor-default"
                 >
-                  <motion.h4 
-                    className="text-lg font-semibold text-frost-text mb-4"
-                    whileHover={{ color: "#3b82f6" }}
-                  >
-                    {skillGroup.category}
-                  </motion.h4>
-                  <div className="flex flex-wrap gap-2">
-                    {skillGroup.items.map((item, itemIndex) => (
-                      <motion.span
-                        key={itemIndex}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ 
-                          delay: groupIndex * 0.1 + itemIndex * 0.05,
-                          duration: 0.4,
-                          type: "spring",
-                          stiffness: 500,
-                          damping: 30
-                        }}
-                        whileHover={{ 
-                          scale: 1.1,
-                          backgroundColor: "#3b82f6",
-                          color: "#ffffff",
-                          y: -2
-                        }}
-                        className="px-3 py-1 text-sm rounded-full bg-glacial-pearl text-frost-text-secondary border border-silver-drift transition-colors cursor-pointer"
-                      >
-                        {item}
-                      </motion.span>
-                    ))}
-                  </div>
+                  <AnimatedFolder
+                    title={folder.title}
+                    projects={folder.projects}
+                    icon={folder.icon}
+                  />
                 </motion.div>
               ))}
             </div>
@@ -178,7 +180,7 @@ const Skills = React.memo(function Skills() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 y: -5,
                 transition: { duration: 0.3 }
@@ -187,22 +189,22 @@ const Skills = React.memo(function Skills() {
             >
               <div className="grid md:grid-cols-2 gap-4">
                 {softSkills.map((item, index) => (
-                  <motion.div 
-                    key={index} 
+                  <motion.div
+                    key={index}
                     className="flex items-start gap-3 group"
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ 
-                      delay: index * 0.1, 
+                    transition={{
+                      delay: index * 0.1,
                       duration: 0.5,
                       ease: [0.6, -0.05, 0.01, 0.99]
                     }}
                     whileHover={{ x: 10, transition: { duration: 0.2 } }}
                   >
-                    <motion.span 
+                    <motion.span
                       className="text-frost-accent text-xl"
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.3,
                         rotate: 360,
                         color: "#10b981"
@@ -212,7 +214,7 @@ const Skills = React.memo(function Skills() {
                       ✓
                     </motion.span>
                     <div>
-                      <motion.p 
+                      <motion.p
                         className="font-semibold text-frost-text group-hover:text-frost-accent transition-colors"
                       >
                         {item.skill}
@@ -233,8 +235,8 @@ const Skills = React.memo(function Skills() {
               whileInView={{ opacity: 1, x: 0, scale: 1, rotateY: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 x: 10,
                 rotateY: 5,
                 transition: { duration: 0.3 }
@@ -244,7 +246,7 @@ const Skills = React.memo(function Skills() {
               <h3 className="text-xl font-bold text-frost-text mb-4 flex items-center gap-2">
                 <motion.span
                   className="text-2xl"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.3,
                     rotate: 360,
                     filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.6))"
@@ -257,8 +259,8 @@ const Skills = React.memo(function Skills() {
               </h3>
               <ul className="space-y-3">
                 {certifications.map((cert, index) => (
-                  <motion.li 
-                    key={index} 
+                  <motion.li
+                    key={index}
                     className="flex items-start gap-3 group/item"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -266,9 +268,9 @@ const Skills = React.memo(function Skills() {
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                     whileHover={{ x: 10, transition: { duration: 0.2 } }}
                   >
-                    <motion.span 
+                    <motion.span
                       className="text-frost-accent text-xl mt-0.5"
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.3,
                         rotate: 360,
                         color: "#3b82f6"
@@ -277,7 +279,7 @@ const Skills = React.memo(function Skills() {
                     >
                       ✓
                     </motion.span>
-                    <motion.span 
+                    <motion.span
                       className="text-frost-text-secondary group-hover/item:text-frost-text"
                       whileHover={{ color: "#3b82f6" }}
                     >
@@ -294,8 +296,8 @@ const Skills = React.memo(function Skills() {
               whileInView={{ opacity: 1, x: 0, scale: 1, rotateY: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 x: -10,
                 rotateY: -5,
                 transition: { duration: 0.3 }
@@ -305,7 +307,7 @@ const Skills = React.memo(function Skills() {
               <h3 className="text-xl font-bold text-frost-text mb-4 flex items-center gap-2">
                 <motion.span
                   className="text-2xl"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.3,
                     rotate: 360,
                     filter: "drop-shadow(0 0 8px rgba(251, 191, 36, 0.6))"
@@ -318,8 +320,8 @@ const Skills = React.memo(function Skills() {
               </h3>
               <ul className="space-y-3">
                 {hackathons.map((hackathon, index) => (
-                  <motion.li 
-                    key={index} 
+                  <motion.li
+                    key={index}
                     className="flex items-start gap-3 group/item"
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -327,9 +329,9 @@ const Skills = React.memo(function Skills() {
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                     whileHover={{ x: 10, transition: { duration: 0.2 } }}
                   >
-                    <motion.span 
+                    <motion.span
                       className="text-frost-accent mt-1"
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.5,
                         rotate: 360,
                         color: "#fbbf24"
@@ -338,7 +340,7 @@ const Skills = React.memo(function Skills() {
                     >
                       •
                     </motion.span>
-                    <motion.span 
+                    <motion.span
                       className="text-frost-text-secondary group-hover/item:text-frost-text"
                       whileHover={{ color: "#3b82f6" }}
                     >

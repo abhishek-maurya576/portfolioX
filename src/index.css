@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Custom Properties for 3D Folder Component */
+:root {
+  --background: #F6F7F8;
+  --foreground: #1a1a1a;
+  --card: #FFFFFF;
+  --card-foreground: #1a1a1a;
+  --border: #DCE0E3;
+  --muted: #EDEFF1;
+  --muted-foreground: #4a5568;
+  --accent: #3b82f6;
+  --accent-foreground: #1a1a1a;
+  --folder-back: #f59e0b;
+  --folder-front: #fbbf24;
+  --folder-tab: #d97706;
+}
+
+
 * {
   margin: 0;
   padding: 0;
