@@ -17,7 +17,7 @@ export default function App() {
   return (
     <div className="bg-gradient-to-br from-polar-mist to-glacial-pearl min-h-screen text-frost-text overflow-x-hidden">
       <Header />
-      
+
       <main>
         <Hero onCTAClick={handleViewWork} />
         <About />

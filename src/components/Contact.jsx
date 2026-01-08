@@ -1,5 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { MicroExpander } from './ui/micro-expander'
+import { GitHubIcon, LinkedInIcon, YouTubeIcon, InstagramIcon, XIcon } from './ui/social-icons'
+import { Mail, MapPin } from 'lucide-react'
 
 const Contact = React.memo(function Contact() {
   const [formData, setFormData] = useState({
@@ -15,13 +18,13 @@ const Contact = React.memo(function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus(null)
-    
+
     try {
       // Create FormData object for Web3Forms
       const formDataObj = new FormData(e.target)
       formDataObj.append('access_key', import.meta.env.VITE_WEB3FORMS_ACCESS_KEY)
       formDataObj.append('subject', `New Portfolio Contact from ${formData.name}`)
-      
+
       // Web3Forms API endpoint
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -29,11 +32,11 @@ const Contact = React.memo(function Contact() {
       })
 
       const result = await response.json()
-      
+
       if (result.success) {
         setSubmitStatus('success')
         setFormData({ name: '', email: '', message: '' })
-        
+
         // Auto-hide success message after 5 seconds
         setTimeout(() => setSubmitStatus(null), 5000)
       } else {
@@ -56,11 +59,36 @@ const Contact = React.memo(function Contact() {
   }, [])
 
   const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/abhishek-maurya576', icon: '💻' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/abhishekmaurya9118', icon: '💼' },
-    { name: 'YouTube', url: 'https://youtube.com/@bforbca', icon: '📺' },
-    { name: 'Instagram', url: 'https://www.instagram.com/zymprox', icon: '📷' },
-    { name: 'Twitter', url: 'https://x.com/Abhishekm576', icon: '🐦' },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/abhishek-maurya576',
+      icon: <GitHubIcon className="w-5 h-5" />,
+      hoverClass: 'hover:text-gray-900 hover:bg-gray-100'
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/abhishekmaurya9118',
+      icon: <LinkedInIcon className="w-5 h-5" />,
+      hoverClass: 'hover:text-[#0A66C2] hover:bg-blue-50'
+    },
+    {
+      name: 'YouTube',
+      url: 'https://youtube.com/@bforbca',
+      icon: <YouTubeIcon className="w-5 h-5" />,
+      hoverClass: 'hover:text-[#FF0000] hover:bg-red-50'
+    },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/zymprox',
+      icon: <InstagramIcon className="w-5 h-5" />,
+      hoverClass: 'hover:text-[#E4405F] hover:bg-pink-50'
+    },
+    {
+      name: 'Twitter',
+      url: 'https://x.com/Abhishekm576',
+      icon: <XIcon className="w-5 h-5" />,
+      hoverClass: 'hover:text-gray-900 hover:bg-gray-100'
+    },
   ]
 
   const containerVariants = {
@@ -79,7 +107,7 @@ const Contact = React.memo(function Contact() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         ease: [0.6, -0.05, 0.01, 0.99]
       },
@@ -106,13 +134,13 @@ const Contact = React.memo(function Contact() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-frost-text mb-6"
           >
-            Get In <motion.span 
+            Get In <motion.span
               className="gradient-text"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
               }}
@@ -120,8 +148,8 @@ const Contact = React.memo(function Contact() {
               Touch
             </motion.span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             variants={itemVariants}
             className="text-frost-text-secondary text-lg mb-12 max-w-2xl"
           >
@@ -147,10 +175,10 @@ const Contact = React.memo(function Contact() {
                     transition={{ delay: index * 0.1, duration: 0.5 }}
                     className="relative"
                   >
-                    <motion.label 
-                      htmlFor={field.name} 
+                    <motion.label
+                      htmlFor={field.name}
                       className="block text-frost-text-secondary mb-2"
-                      animate={{ 
+                      animate={{
                         color: focusedField === field.name ? "#3b82f6" : "#4a5568",
                         y: focusedField === field.name ? -2 : 0
                       }}
@@ -158,7 +186,7 @@ const Contact = React.memo(function Contact() {
                     >
                       {field.label}
                     </motion.label>
-                    
+
                     {field.type === 'textarea' ? (
                       <motion.textarea
                         id={field.name}
@@ -169,7 +197,7 @@ const Contact = React.memo(function Contact() {
                         onBlur={() => setFocusedField(null)}
                         required
                         rows={field.rows}
-                        whileFocus={{ 
+                        whileFocus={{
                           scale: 1.02,
                           boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)"
                         }}
@@ -186,7 +214,7 @@ const Contact = React.memo(function Contact() {
                         onFocus={() => setFocusedField(field.name)}
                         onBlur={() => setFocusedField(null)}
                         required
-                        whileFocus={{ 
+                        whileFocus={{
                           scale: 1.02,
                           boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)"
                         }}
@@ -300,86 +328,104 @@ const Contact = React.memo(function Contact() {
 
             <motion.div
               variants={itemVariants}
-              className="space-y-8"
+              className="space-y-6"
             >
-              <motion.div 
-                className="glass-effect rounded-2xl p-8"
-                whileHover={{ 
+              {/* Compact Contact Info Card */}
+              <motion.div
+                className="glass-effect rounded-2xl p-6"
+                whileHover={{
                   scale: 1.02,
-                  y: -5,
+                  y: -3,
                   transition: { duration: 0.3 }
                 }}
               >
-              <h3 className="text-2xl font-semibold text-frost-text mb-4 flex items-center gap-2">
-                <span>📧</span>
-                Contact Information
-              </h3>
-                <div className="space-y-4 text-frost-text-secondary">
-                  <motion.p
-                    whileHover={{ x: 10, color: "#3b82f6" }}
-                    transition={{ duration: 0.2 }}
+                <h3 className="text-xl font-semibold text-frost-text mb-4 flex items-center gap-2">
+                  <span className="text-frost-accent">✦</span>
+                  Get In Touch
+                </h3>
+
+                {/* Inline Contact Info */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <motion.a
+                    href="mailto:maurya972137@gmail.com"
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-frost-veil/50 border border-silver-drift/50 hover:border-frost-accent/50 transition-all duration-300 group flex-1"
+                    whileHover={{ x: 5 }}
                   >
-                    <strong className="text-frost-text">Email:</strong><br />
-                    maurya972137@gmail.com
-                  </motion.p>
-                  <motion.p
-                    whileHover={{ x: 10, color: "#3b82f6" }}
-                    transition={{ duration: 0.2 }}
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-frost-text-secondary uppercase tracking-wide">Email</p>
+                      <p className="text-frost-text font-medium text-sm truncate group-hover:text-frost-accent transition-colors">
+                        maurya972137@gmail.com
+                      </p>
+                    </div>
+                  </motion.a>
+
+                  <motion.div
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-frost-veil/50 border border-silver-drift/50 flex-1"
+                    whileHover={{ x: 5 }}
                   >
-                    <strong className="text-frost-text">Location:</strong><br />
-                    Allahabad, India
-                  </motion.p>
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white">
+                      <MapPin className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-frost-text-secondary uppercase tracking-wide">Location</p>
+                      <p className="text-frost-text font-medium text-sm">Allahabad, India</p>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Social Links with MicroExpander */}
+                <div className="pt-4 border-t border-silver-drift/50">
+                  <p className="text-xs text-frost-text-secondary uppercase tracking-wide mb-4">Connect With Me</p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {socialLinks.map((social, index) => (
+                      <motion.div
+                        key={social.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          delay: index * 0.08,
+                          duration: 0.3,
+                          type: "spring",
+                          stiffness: 400
+                        }}
+                      >
+                        <a
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MicroExpander
+                            text={social.name}
+                            icon={social.icon}
+                            variant="ghost"
+                            className={`h-11 ${social.hoverClass} transition-all duration-300`}
+                          />
+                        </a>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
 
-              <motion.div 
-                className="glass-effect rounded-2xl p-8"
-                whileHover={{ 
-                  scale: 1.02,
-                  y: -5,
-                  transition: { duration: 0.3 }
-                }}
+              {/* Quick Stats / Availability Badge */}
+              <motion.div
+                className="glass-effect rounded-xl p-4 flex items-center gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
               >
-                <h3 className="text-2xl font-semibold text-frost-text mb-6 flex items-center gap-2">
-                  <span>🌐</span>
-                  Connect With Me
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {socialLinks.map((social, index) => (
-                    <motion.a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ 
-                        delay: index * 0.1, 
-                        duration: 0.4,
-                        type: "spring",
-                        stiffness: 500
-                      }}
-                      whileHover={{ 
-                        scale: 1.1, 
-                        y: -5,
-                        boxShadow: "0 10px 25px rgba(59, 130, 246, 0.15)"
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-3 p-3 rounded-lg bg-frost-veil border border-silver-drift hover:border-frost-accent transition-all duration-300 group"
-                    >
-                      <motion.span 
-                        className="text-2xl"
-                        whileHover={{ rotate: 360, scale: 1.2 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {social.icon}
-                      </motion.span>
-                      <span className="text-frost-text-secondary group-hover:text-frost-accent transition-colors">
-                        {social.name}
-                      </span>
-                    </motion.a>
-                  ))}
+                <div className="relative">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75"></div>
+                </div>
+                <div>
+                  <p className="text-frost-text font-medium text-sm">Available for new projects</p>
+                  <p className="text-frost-text-secondary text-xs">Typically replies within 24 hours</p>
                 </div>
               </motion.div>
             </motion.div>

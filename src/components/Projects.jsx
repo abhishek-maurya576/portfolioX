@@ -51,7 +51,7 @@ const Projects = React.memo(function Projects() {
       y: 0,
       opacity: 1,
       scale: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         ease: [0.6, -0.05, 0.01, 0.99]
       },
@@ -78,13 +78,13 @@ const Projects = React.memo(function Projects() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-frost-text mb-6"
           >
-            Featured <motion.span 
+            Featured <motion.span
               className="gradient-text"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
               }}
@@ -92,8 +92,8 @@ const Projects = React.memo(function Projects() {
               Projects
             </motion.span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             variants={itemVariants}
             className="text-frost-text-secondary text-lg mb-12 max-w-2xl"
           >
@@ -107,7 +107,7 @@ const Projects = React.memo(function Projects() {
                 variants={itemVariants}
                 onHoverStart={() => setHoveredProject(index)}
                 onHoverEnd={() => setHoveredProject(null)}
-                whileHover={{ 
+                whileHover={{
                   y: -15,
                   scale: 1.02,
                   rotateX: 5,
@@ -120,7 +120,7 @@ const Projects = React.memo(function Projects() {
                 }}
               >
                 {/* Animated gradient border */}
-                <motion.div 
+                <motion.div
                   className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${project.gradient}`}
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
@@ -140,25 +140,25 @@ const Projects = React.memo(function Projects() {
                     />
                   )}
                 </AnimatePresence>
-                
-                <motion.h3 
+
+                <motion.h3
                   className="text-2xl font-bold text-frost-text mb-4 relative z-10"
-                  whileHover={{ 
+                  whileHover={{
                     color: "#3b82f6",
                     textShadow: "0 0 10px rgba(59, 130, 246, 0.3)"
                   }}
                 >
                   {project.title}
                 </motion.h3>
-                
-                <motion.p 
+
+                <motion.p
                   className="text-frost-text-secondary mb-6 leading-relaxed relative z-10"
                   initial={{ opacity: 0.8 }}
                   whileHover={{ opacity: 1 }}
                 >
                   {project.description}
                 </motion.p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6 relative z-10">
                   {project.tech.map((tech, techIndex) => (
                     <motion.span
@@ -166,13 +166,13 @@ const Projects = React.memo(function Projects() {
                       initial={{ opacity: 0, scale: 0 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ 
+                      transition={{
                         delay: index * 0.1 + techIndex * 0.05,
                         duration: 0.3,
                         type: "spring",
                         stiffness: 500
                       }}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.1,
                         backgroundColor: "#3b82f6",
                         color: "#ffffff",
@@ -184,12 +184,12 @@ const Projects = React.memo(function Projects() {
                     </motion.span>
                   ))}
                 </div>
-                
+
                 <motion.a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.05,
                     x: 10
                   }}

@@ -41,7 +41,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
       y: 0,
       opacity: 1,
       scale: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         ease: [0.6, -0.05, 0.01, 0.99]
       },
@@ -62,7 +62,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
 
   const magneticVariants = {
     rest: { scale: 1 },
-    hover: { 
+    hover: {
       scale: 1.05,
       transition: {
         type: "spring",
@@ -86,7 +86,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="container mx-auto px-6 py-12 relative z-10"
         style={{ y, opacity }}
       >
@@ -99,136 +99,136 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Text Content */}
             <div>
-            <motion.div 
-              variants={itemVariants}
-              whileHover={{ 
-                scale: 1.05,
-                x: 10,
-                transition: { type: "spring", stiffness: 400, damping: 10 }
-              }}
-              className="text-frost-accent font-semibold mb-4 inline-block cursor-default"
-            >
-              <motion.span
-                animate={{ 
-                  rotate: [0, 14, -8, 0],
+              <motion.div
+                variants={itemVariants}
+                whileHover={{
+                  scale: 1.05,
+                  x: 10,
+                  transition: { type: "spring", stiffness: 400, damping: 10 }
                 }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: Infinity, 
-                  repeatDelay: 4,
-                  ease: "easeInOut"
-                }}
-                className="inline-block mr-2"
+                className="text-frost-accent font-semibold mb-4 inline-block cursor-default"
               >
-                👋
-              </motion.span>
-              Welcome to my portfolio
-            </motion.div>
-            
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl md:text-6xl font-extrabold text-frost-text leading-tight mb-4"
-            >
-              Hi, I'm{' '}
-              <span className="gradient-text inline-block">
-                Abhishek Maurya
-              </span>
-            </motion.h1>
-            
-            <motion.p
-              variants={itemVariants}
-              className="text-lg text-frost-text-secondary max-w-xl mb-6 leading-relaxed"
-            >
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.8 }}
-              >
-                BCA student & aspiring Software Engineer.
-              </motion.span>{' '}
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.3, duration: 0.8 }}
-              >
-                I build modern digital experiences with clean code and thoughtful design.
-              </motion.span>
-            </motion.p>
-            
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
-              <motion.button
-                onClick={onCTAClick}
-                variants={magneticVariants}
-                initial="rest"
-                whileHover="hover"
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-lg overflow-hidden"
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100"
-                  transition={{ duration: 0.3 }}
-                />
-                <span className="relative z-10">
-                  View My Work
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-white/20"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.6 }}
-                />
-              </motion.button>
-              
-              <motion.a
-                href="#contact"
-                variants={magneticVariants}
-                initial="rest"
-                whileHover="hover"
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 rounded-full border-2 border-silver-drift text-frost-text relative overflow-hidden backdrop-blur-sm"
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100"
-                  transition={{ duration: 0.3 }}
-                />
-                <span className="relative z-10">Contact Me</span>
-              </motion.a>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex gap-4 mt-6"
-            >
-              {[
-                { name: 'GitHub', url: 'https://github.com/abhishek-maurya576' },
-                { name: 'LinkedIn', url: 'https://www.linkedin.com/in/abhishekmaurya9118' },
-                { name: 'YouTube', url: 'https://youtube.com/@bforbca' },
-                { name: 'Twitter', url: 'https://x.com/Abhishekm576' },
-              ].map((social, index) => (
-                <motion.a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.5 + index * 0.1, duration: 0.5 }}
-                  whileHover={{ 
-                    scale: 1.2, 
-                    y: -6,
-                    color: "#3b82f6",
-                    textShadow: "0 4px 8px rgba(59, 130, 246, 0.3)"
+                <motion.span
+                  animate={{
+                    rotate: [0, 14, -8, 0],
                   }}
-                  className="text-frost-text-secondary relative group"
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatDelay: 4,
+                    ease: "easeInOut"
+                  }}
+                  className="inline-block mr-2"
                 >
-                  <motion.span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:w-full"
+                  👋
+                </motion.span>
+                Welcome to my portfolio
+              </motion.div>
+
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-6xl font-extrabold text-frost-text leading-tight mb-4"
+              >
+                Hi, I'm{' '}
+                <span className="gradient-text inline-block">
+                  Abhishek Maurya
+                </span>
+              </motion.h1>
+
+              <motion.p
+                variants={itemVariants}
+                className="text-lg text-frost-text-secondary max-w-xl mb-6 leading-relaxed"
+              >
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                >
+                  BCA student & aspiring Software Engineer.
+                </motion.span>{' '}
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.3, duration: 0.8 }}
+                >
+                  I build modern digital experiences with clean code and thoughtful design.
+                </motion.span>
+              </motion.p>
+
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+                <motion.button
+                  onClick={onCTAClick}
+                  variants={magneticVariants}
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.95 }}
+                  className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-lg overflow-hidden"
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.3 }}
                   />
-                  {social.name}
+                  <span className="relative z-10">
+                    View My Work
+                  </span>
+                  <motion.div
+                    className="absolute inset-0 bg-white/20"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.6 }}
+                  />
+                </motion.button>
+
+                <motion.a
+                  href="#contact"
+                  variants={magneticVariants}
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.95 }}
+                  className="group px-8 py-4 rounded-full border-2 border-silver-drift text-frost-text relative overflow-hidden backdrop-blur-sm"
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100"
+                    transition={{ duration: 0.3 }}
+                  />
+                  <span className="relative z-10">Contact Me</span>
                 </motion.a>
-              ))}
-            </motion.div>
+              </motion.div>
+
+              <motion.div
+                variants={itemVariants}
+                className="flex gap-4 mt-6"
+              >
+                {[
+                  { name: 'GitHub', url: 'https://github.com/abhishek-maurya576' },
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/abhishekmaurya9118' },
+                  { name: 'YouTube', url: 'https://youtube.com/@bforbca' },
+                  { name: 'Twitter', url: 'https://x.com/Abhishekm576' },
+                ].map((social, index) => (
+                  <motion.a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.5 + index * 0.1, duration: 0.5 }}
+                    whileHover={{
+                      scale: 1.2,
+                      y: -6,
+                      color: "#3b82f6",
+                      textShadow: "0 4px 8px rgba(59, 130, 246, 0.3)"
+                    }}
+                    className="text-frost-text-secondary relative group"
+                  >
+                    <motion.span
+                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:w-full"
+                      transition={{ duration: 0.3 }}
+                    />
+                    {social.name}
+                  </motion.a>
+                ))}
+              </motion.div>
             </div>
 
             {/* Profile Image */}
@@ -247,9 +247,9 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
               >
                 {/* Animated decorative background */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-indigo-500/20 to-purple-500/20 rounded-3xl blur-2xl" />
-                
+
                 {/* Image container with enhanced effects */}
-                <motion.div 
+                <motion.div
                   className="relative rounded-3xl overflow-hidden border-4 border-frost-veil shadow-2xl"
                   whileHover={{
                     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.3)"
@@ -264,9 +264,9 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                     transition={{ duration: 1.2, delay: 0.5 }}
                     whileHover={{ scale: 1.1 }}
                   />
-                  
+
                   {/* Enhanced gradient overlay */}
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-frost-text/10 to-transparent"
                     whileHover={{ opacity: 0.5 }}
                   />
@@ -276,9 +276,9 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                     initial={{ x: "-100%" }}
                     animate={{ x: "100%" }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity, 
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
                       repeatDelay: 3,
                       ease: "easeInOut"
                     }}
@@ -289,7 +289,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                 <motion.div
                   variants={floatVariants}
                   animate="animate"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.1,
                     boxShadow: "0 10px 25px rgba(59, 130, 246, 0.4)"
                   }}

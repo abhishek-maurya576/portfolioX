@@ -19,7 +19,7 @@ const About = React.memo(function About() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.8,
         ease: [0.6, -0.05, 0.01, 0.99]
       },
@@ -32,7 +32,7 @@ const About = React.memo(function About() {
       y: 0,
       opacity: 1,
       scale: 1,
-      transition: { 
+      transition: {
         duration: 0.7,
         ease: [0.6, -0.05, 0.01, 0.99]
       },
@@ -43,7 +43,7 @@ const About = React.memo(function About() {
     <section id="about" className="py-20 bg-gradient-to-b from-glacial-pearl via-polar-mist to-silver-drift relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-100/50 to-transparent rounded-full blur-3xl" />
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           variants={containerVariants}
@@ -51,11 +51,11 @@ const About = React.memo(function About() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.h2 
+          <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-frost-text mb-6"
           >
-            About <motion.span 
+            About <motion.span
               className="gradient-text"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -63,9 +63,9 @@ const About = React.memo(function About() {
               Me
             </motion.span>
           </motion.h2>
-          
+
           <div className="grid md:grid-cols-2 gap-12 mt-12">
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="space-y-6"
             >
@@ -79,8 +79,8 @@ const About = React.memo(function About() {
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ 
-                    duration: 0.6, 
+                  transition={{
+                    duration: 0.6,
                     delay: index * 0.2,
                     ease: [0.6, -0.05, 0.01, 0.99]
                   }}
@@ -90,9 +90,9 @@ const About = React.memo(function About() {
                   {index === 0 ? (
                     <>
                       I'm a passionate BCA student at the{' '}
-                      <motion.strong 
+                      <motion.strong
                         className="text-frost-text"
-                        whileHover={{ 
+                        whileHover={{
                           color: "#3b82f6",
                           textShadow: "0 0 8px rgba(59, 130, 246, 0.3)"
                         }}
@@ -142,7 +142,7 @@ const About = React.memo(function About() {
                     <ul className="text-frost-text-secondary space-y-2">
                       {[
                         "App Development (Android & Web)",
-                        "Artificial Intelligence & Machine Learning", 
+                        "Artificial Intelligence & Machine Learning",
                         "Open Source Contributions",
                         "Educational Content Creation"
                       ].map((interest, i) => (
@@ -165,7 +165,7 @@ const About = React.memo(function About() {
                 <motion.div
                   key={index}
                   variants={cardVariants}
-                  whileHover={{ 
+                  whileHover={{
                     y: -8,
                     scale: 1.02,
                     transition: { duration: 0.3 }

@@ -17,7 +17,7 @@ const Header = React.memo(function Header() {
 
       // Update active section based on scroll position
       const sectionElements = sections.map(id => document.getElementById(id))
-      
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const element = sectionElements[i]
         if (element && scrollPosition >= element.offsetTop - 100) {
@@ -45,7 +45,7 @@ const Header = React.memo(function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               textShadow: "0 0 10px rgba(59, 130, 246, 0.5)"
             }}
@@ -54,9 +54,9 @@ const Header = React.memo(function Header() {
           >
             Abhishek Maurya
           </motion.div>
-          
+
           {/* Pill-shaped Navigation */}
-          <motion.nav 
+          <motion.nav
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -70,11 +70,10 @@ const Header = React.memo(function Header() {
                   href={`#${item.toLowerCase()}`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    isActive 
-                      ? 'text-white' 
+                  className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                      ? 'text-white'
                       : 'text-frost-text-secondary hover:text-frost-text'
-                  }`}
+                    }`}
                 >
                   {/* Active background */}
                   {isActive && (
@@ -85,7 +84,7 @@ const Header = React.memo(function Header() {
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
-                  
+
                   {/* Text */}
                   <span className="relative z-10">{item}</span>
                 </motion.a>
@@ -96,7 +95,7 @@ const Header = React.memo(function Header() {
           {/* CTA Button */}
           <motion.a
             href="#contact"
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)"
             }}
@@ -104,7 +103,7 @@ const Header = React.memo(function Header() {
             className="hidden md:block px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden"
           >
             <span className="relative z-10">Get in Touch</span>
-            
+
             {/* Shimmer effect */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
