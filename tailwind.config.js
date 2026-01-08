@@ -7,15 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        'frost-veil': '#FFFFFF',
-        'polar-mist': '#F6F7F8',
-        'glacial-pearl': '#EDEFF1',
-        'silver-drift': '#DCE0E3',
-        'cloud-quartz': '#C9CDD2',
-        'frost-text': '#1a1a1a',
-        'frost-text-secondary': '#4a5568',
-        'frost-accent': '#3b82f6',
-        'frost-accent-hover': '#2563eb',
+        'frost-veil': '#0a0a0a',
+        'polar-mist': '#0d0d0d',
+        'glacial-pearl': '#141414',
+        'silver-drift': '#2a2a2a',
+        'cloud-quartz': '#3a3a3a',
+        'frost-text': '#f5f5f5',
+        'frost-text-secondary': '#a0a0a0',
+        'frost-accent': '#60a5fa',
+        'frost-accent-hover': '#3b82f6',
         // CSS variable-based colors for 3D folder component
         background: 'var(--background)',
         foreground: 'var(--foreground)',

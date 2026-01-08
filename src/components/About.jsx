@@ -40,9 +40,9 @@ const About = React.memo(function About() {
   }
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-glacial-pearl via-polar-mist to-silver-drift relative overflow-hidden">
+    <section id="about" className="py-20 bg-transparent relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-100/50 to-transparent rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-600/15 to-transparent rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div

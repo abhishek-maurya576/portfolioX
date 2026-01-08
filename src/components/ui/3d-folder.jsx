@@ -22,11 +22,11 @@ export function AnimatedFolder({ title, projects, className, icon }) {
             <div
                 className="mb-3 flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300"
                 style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(246,247,248,0.98) 100%)",
+                    background: "linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(20,20,20,0.98) 100%)",
                     boxShadow: isHovered
-                        ? "0 4px 20px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255,255,255,0.9)"
-                        : "0 2px 10px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8)",
-                    border: isHovered ? "1px solid rgba(59, 130, 246, 0.4)" : "1px solid rgba(220,224,227,0.5)",
+                        ? "0 4px 20px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255,255,255,0.05)"
+                        : "0 2px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03)",
+                    border: isHovered ? "1px solid rgba(59, 130, 246, 0.5)" : "1px solid rgba(60,60,60,0.5)",
                     transform: isHovered ? "scale(1.02)" : "scale(1)",
                 }}
             >
@@ -52,11 +52,11 @@ export function AnimatedFolder({ title, projects, className, icon }) {
                     minWidth: "220px",
                     minHeight: "200px",
                     perspective: "1000px",
-                    background: "linear-gradient(145deg, #ffffff 0%, #f0f2f5 100%)",
+                    background: "linear-gradient(145deg, #1a1a1a 0%, #0f0f0f 100%)",
                     boxShadow: isHovered
-                        ? "10px 10px 30px rgba(0,0,0,0.1), -8px -8px 24px rgba(255,255,255,0.95)"
-                        : "6px 6px 18px rgba(0,0,0,0.07), -4px -4px 14px rgba(255,255,255,0.85)",
-                    border: isHovered ? "1px solid rgba(59, 130, 246, 0.15)" : "1px solid rgba(220,224,227,0.3)",
+                        ? "10px 10px 30px rgba(0,0,0,0.5), -8px -8px 24px rgba(40,40,40,0.3)"
+                        : "6px 6px 18px rgba(0,0,0,0.4), -4px -4px 14px rgba(40,40,40,0.2)",
+                    border: isHovered ? "1px solid rgba(59, 130, 246, 0.3)" : "1px solid rgba(60,60,60,0.3)",
                     transform: isHovered ? "translateY(-4px)" : "translateY(0)",
                 }}
                 onMouseEnter={() => setIsHovered(true)}

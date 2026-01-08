@@ -115,7 +115,7 @@ const Contact = React.memo(function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-silver-drift via-cloud-quartz to-glacial-pearl relative overflow-hidden">
+    <section id="contact" className="py-20 bg-transparent relative overflow-hidden">
       {/* Background decoration */}
       <motion.div
         className="absolute inset-0 opacity-20"
@@ -123,8 +123,8 @@ const Contact = React.memo(function Contact() {
         animate={{ opacity: 0.2 }}
         transition={{ duration: 2 }}
       >
-        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-blue-300/30 to-indigo-300/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-purple-300/30 to-pink-300/30 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-blue-600/15 to-indigo-600/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-purple-600/15 to-pink-600/15 rounded-full blur-3xl"></div>
       </motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -156,10 +156,10 @@ const Contact = React.memo(function Contact() {
             Have a project in mind or just want to chat? Feel free to reach out!
           </motion.p>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-12 gap-8 lg:gap-12">
             <motion.div
               variants={itemVariants}
-              className="relative"
+              className="relative md:col-span-5"
             >
               <form onSubmit={handleSubmit} className="space-y-6">
                 {[
@@ -284,7 +284,7 @@ const Contact = React.memo(function Contact() {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="mt-4 p-4 rounded-lg bg-green-50 border border-green-200 flex items-center gap-3"
+                      className="mt-4 p-4 rounded-lg bg-green-900/30 border border-green-700/50 flex items-center gap-3"
                     >
                       <motion.span
                         initial={{ scale: 0 }}
@@ -295,8 +295,8 @@ const Contact = React.memo(function Contact() {
                         ✅
                       </motion.span>
                       <div>
-                        <p className="text-green-800 font-semibold">Message sent successfully!</p>
-                        <p className="text-green-600 text-sm">Thank you for reaching out. I'll get back to you soon!</p>
+                        <p className="text-green-300 font-semibold">Message sent successfully!</p>
+                        <p className="text-green-400/80 text-sm">Thank you for reaching out. I'll get back to you soon!</p>
                       </div>
                     </motion.div>
                   )}
@@ -306,7 +306,7 @@ const Contact = React.memo(function Contact() {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="mt-4 p-4 rounded-lg bg-red-50 border border-red-200 flex items-center gap-3"
+                      className="mt-4 p-4 rounded-lg bg-red-900/30 border border-red-700/50 flex items-center gap-3"
                     >
                       <motion.span
                         initial={{ scale: 0 }}
@@ -317,8 +317,8 @@ const Contact = React.memo(function Contact() {
                         ❌
                       </motion.span>
                       <div>
-                        <p className="text-red-800 font-semibold">Oops! Something went wrong.</p>
-                        <p className="text-red-600 text-sm">Please try again or email me directly at maurya972137@gmail.com</p>
+                        <p className="text-red-300 font-semibold">Oops! Something went wrong.</p>
+                        <p className="text-red-400/80 text-sm">Please try again or email me directly at maurya972137@gmail.com</p>
                       </div>
                     </motion.div>
                   )}
@@ -328,7 +328,7 @@ const Contact = React.memo(function Contact() {
 
             <motion.div
               variants={itemVariants}
-              className="space-y-6"
+              className="space-y-6 md:col-span-7"
             >
               {/* Compact Contact Info Card */}
               <motion.div
@@ -339,12 +339,7 @@ const Contact = React.memo(function Contact() {
                   transition: { duration: 0.3 }
                 }}
               >
-                <h3 className="text-xl font-semibold text-frost-text mb-4 flex items-center gap-2">
-                  <span className="text-frost-accent">✦</span>
-                  Get In Touch
-                </h3>
-
-                {/* Inline Contact Info */}
+                {/* Contact Info */}
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
                   <motion.a
                     href="mailto:maurya972137@gmail.com"

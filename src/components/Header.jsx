@@ -60,7 +60,7 @@ const Header = React.memo(function Header() {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="hidden md:flex items-center gap-1 px-2 py-2 rounded-full bg-white/80 backdrop-blur-xl border border-silver-drift/30 shadow-lg"
+            className="hidden md:flex items-center gap-1 px-2 py-2 rounded-full bg-black/60 backdrop-blur-xl border border-silver-drift/30 shadow-lg"
           >
             {['About', 'Skills', 'Projects', 'Contact'].map((item) => {
               const isActive = activeSection === item.toLowerCase()
@@ -71,8 +71,8 @@ const Header = React.memo(function Header() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className={`relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${isActive
-                      ? 'text-white'
-                      : 'text-frost-text-secondary hover:text-frost-text'
+                    ? 'text-white'
+                    : 'text-frost-text-secondary hover:text-frost-text'
                     }`}
                 >
                   {/* Active background */}

@@ -73,7 +73,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
   }
 
   return (
-    <section id="hero" className="min-h-[85vh] flex items-center pt-16 pb-12 bg-gradient-to-br from-frost-veil via-polar-mist to-glacial-pearl relative overflow-hidden">
+    <section id="hero" className="min-h-[85vh] flex items-center pt-16 pb-12 bg-transparent relative overflow-hidden">
       {/* Animated background elements */}
       <motion.div
         className="absolute inset-0 opacity-30"
@@ -82,8 +82,8 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
           y: mousePosition.y,
         }}
       >
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-600/15 to-indigo-600/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-600/15 to-pink-600/15 rounded-full blur-3xl"></div>
       </motion.div>
 
       <motion.div
@@ -188,7 +188,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   className="group px-8 py-4 rounded-full border-2 border-silver-drift text-frost-text relative overflow-hidden backdrop-blur-sm"
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-indigo-900/30 opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.3 }}
                   />
                   <span className="relative z-10">Contact Me</span>

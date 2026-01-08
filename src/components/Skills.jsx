@@ -106,10 +106,10 @@ const Skills = React.memo(function Skills() {
   }
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-silver-drift via-glacial-pearl to-polar-mist relative overflow-hidden">
+    <section id="skills" className="py-20 bg-transparent relative overflow-hidden">
       {/* Animated background elements */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-purple-200/30 to-blue-200/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-indigo-200/30 to-pink-200/30 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-purple-600/15 to-blue-600/15 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-indigo-600/15 to-pink-600/15 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div

@@ -5,6 +5,7 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import { DottedSurface } from './components/ui/dotted-surface'
 
 export default function App() {
   const handleViewWork = () => {
@@ -15,10 +16,11 @@ export default function App() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-polar-mist to-glacial-pearl min-h-screen text-frost-text overflow-x-hidden">
+    <div className="bg-gradient-to-br from-polar-mist to-glacial-pearl min-h-screen text-frost-text overflow-x-hidden relative">
+      <DottedSurface />
       <Header />
 
-      <main>
+      <main className="relative z-10">
         <Hero onCTAClick={handleViewWork} />
         <About />
         <Skills />

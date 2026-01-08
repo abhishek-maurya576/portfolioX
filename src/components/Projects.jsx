@@ -59,7 +59,7 @@ const Projects = React.memo(function Projects() {
   }
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-polar-mist via-glacial-pearl to-silver-drift relative overflow-hidden">
+    <section id="projects" className="py-20 bg-transparent relative overflow-hidden">
       {/* Background decoration */}
       <motion.div
         className="absolute top-0 left-0 w-full h-full opacity-30"
@@ -67,8 +67,8 @@ const Projects = React.memo(function Projects() {
         animate={{ opacity: 0.3 }}
         transition={{ duration: 2 }}
       >
-        <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-bl from-blue-200/40 to-purple-200/40 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-tr from-indigo-200/40 to-pink-200/40 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-bl from-blue-600/15 to-purple-600/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-tr from-indigo-600/15 to-pink-600/15 rounded-full blur-3xl"></div>
       </motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
