@@ -47,7 +47,7 @@ const Header = React.memo(function Header() {
           <motion.div
             whileHover={{
               scale: 1.05,
-              textShadow: "0 0 10px rgba(59, 130, 246, 0.5)"
+              textShadow: "0 0 10px rgba(var(--primary-rgb), 0.5)"
             }}
             className="font-bold text-xl gradient-text cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -79,7 +79,7 @@ const Header = React.memo(function Header() {
                   {isActive && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-md"
+                      className="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary rounded-full shadow-md"
                       initial={false}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
@@ -97,10 +97,10 @@ const Header = React.memo(function Header() {
             href="#contact"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 10px 25px rgba(59, 130, 246, 0.3)"
+              boxShadow: "0 10px 25px rgba(var(--primary-rgb), 0.3)"
             }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:block px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden"
+            className="hidden md:block px-6 py-2.5 rounded-full bg-gradient-to-r from-primary-600 to-secondary text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden"
           >
             <span className="relative z-10">Get in Touch</span>
 

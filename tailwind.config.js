@@ -7,6 +7,40 @@ export default {
   theme: {
     extend: {
       colors: {
+        // ===== CENTRALIZED THEME COLORS =====
+        // These reference CSS variables from index.css
+
+        // Primary color palette (using CSS variables)
+        primary: {
+          50: 'var(--primary-50)',
+          100: 'var(--primary-100)',
+          200: 'var(--primary-200)',
+          300: 'var(--primary-300)',
+          400: 'var(--primary-400)',
+          500: 'var(--primary-500)',
+          600: 'var(--primary-600)',
+          700: 'var(--primary-700)',
+          800: 'var(--primary-800)',
+          900: 'var(--primary-900)',
+          DEFAULT: 'var(--primary-600)',
+        },
+
+        // Secondary color palette
+        secondary: {
+          500: 'var(--secondary-500)',
+          600: 'var(--secondary-600)',
+          700: 'var(--secondary-700)',
+          DEFAULT: 'var(--secondary-600)',
+        },
+
+        // Tertiary color palette
+        tertiary: {
+          500: 'var(--tertiary-500)',
+          600: 'var(--tertiary-600)',
+          DEFAULT: 'var(--tertiary-600)',
+        },
+
+        // Dark theme base colors
         'frost-veil': '#0a0a0a',
         'polar-mist': '#0d0d0d',
         'glacial-pearl': '#141414',
@@ -14,8 +48,11 @@ export default {
         'cloud-quartz': '#3a3a3a',
         'frost-text': '#f5f5f5',
         'frost-text-secondary': '#a0a0a0',
-        'frost-accent': '#60a5fa',
-        'frost-accent-hover': '#3b82f6',
+
+        // Accent colors (using CSS variables)
+        'frost-accent': 'var(--accent)',
+        'frost-accent-hover': 'var(--accent-hover)',
+
         // CSS variable-based colors for 3D folder component
         background: 'var(--background)',
         foreground: 'var(--foreground)',

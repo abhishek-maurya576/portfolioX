@@ -108,8 +108,8 @@ const Skills = React.memo(function Skills() {
   return (
     <section id="skills" className="py-20 bg-transparent relative overflow-hidden">
       {/* Animated background elements */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-purple-600/15 to-blue-600/15 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-indigo-600/15 to-pink-600/15 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-purple-600/15 to-primary-600/15 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-secondary/15 to-tertiary/15 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -126,7 +126,7 @@ const Skills = React.memo(function Skills() {
               className="gradient-text"
               whileHover={{
                 scale: 1.05,
-                textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+                textShadow: "0 0 20px rgba(var(--primary-rgb), 0.5)"
               }}
             >
               Expertise
@@ -249,7 +249,7 @@ const Skills = React.memo(function Skills() {
                   whileHover={{
                     scale: 1.3,
                     rotate: 360,
-                    filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.6))"
+                    filter: "drop-shadow(0 0 8px rgba(var(--primary-rgb), 0.6))"
                   }}
                   transition={{ duration: 0.5 }}
                 >
@@ -273,7 +273,7 @@ const Skills = React.memo(function Skills() {
                       whileHover={{
                         scale: 1.3,
                         rotate: 360,
-                        color: "#3b82f6"
+                        color: "var(--primary-600)"
                       }}
                       transition={{ duration: 0.3 }}
                     >
@@ -281,7 +281,7 @@ const Skills = React.memo(function Skills() {
                     </motion.span>
                     <motion.span
                       className="text-frost-text-secondary group-hover/item:text-frost-text"
-                      whileHover={{ color: "#3b82f6" }}
+                      whileHover={{ color: "var(--primary-600)" }}
                     >
                       {cert}
                     </motion.span>
@@ -342,7 +342,7 @@ const Skills = React.memo(function Skills() {
                     </motion.span>
                     <motion.span
                       className="text-frost-text-secondary group-hover/item:text-frost-text"
-                      whileHover={{ color: "#3b82f6" }}
+                      whileHover={{ color: "var(--primary-600)" }}
                     >
                       {hackathon}
                     </motion.span>

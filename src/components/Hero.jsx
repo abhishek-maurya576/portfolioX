@@ -82,7 +82,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
           y: mousePosition.y,
         }}
       >
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-600/15 to-indigo-600/15 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary-600/15 to-secondary/15 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-600/15 to-pink-600/15 rounded-full blur-3xl"></div>
       </motion.div>
 
@@ -162,10 +162,10 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   initial="rest"
                   whileHover="hover"
                   whileTap={{ scale: 0.95 }}
-                  className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-lg overflow-hidden"
+                  className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-secondary text-white font-semibold shadow-lg overflow-hidden"
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 bg-gradient-to-r from-secondary to-tertiary opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.3 }}
                   />
                   <span className="relative z-10">
@@ -188,7 +188,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   className="group px-8 py-4 rounded-full border-2 border-silver-drift text-frost-text relative overflow-hidden backdrop-blur-sm"
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-indigo-900/30 opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 bg-gradient-to-r from-primary-900/30 to-secondary-700/30 opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.3 }}
                   />
                   <span className="relative z-10">Contact Me</span>
@@ -216,13 +216,13 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                     whileHover={{
                       scale: 1.2,
                       y: -6,
-                      color: "#3b82f6",
-                      textShadow: "0 4px 8px rgba(59, 130, 246, 0.3)"
+                      color: "var(--primary-600)",
+                      textShadow: "0 4px 8px rgba(var(--primary-rgb), 0.3)"
                     }}
                     className="text-frost-text-secondary relative group"
                   >
                     <motion.span
-                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 group-hover:w-full"
+                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary group-hover:w-full"
                       transition={{ duration: 0.3 }}
                     />
                     {social.name}
@@ -246,13 +246,13 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                 }}
               >
                 {/* Animated decorative background */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-indigo-500/20 to-purple-500/20 rounded-3xl blur-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 via-secondary-500/20 to-tertiary-500/20 rounded-3xl blur-2xl" />
 
                 {/* Image container with enhanced effects */}
                 <motion.div
                   className="relative rounded-3xl overflow-hidden border-4 border-frost-veil shadow-2xl"
                   whileHover={{
-                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.3)"
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(var(--primary-rgb), 0.3)"
                   }}
                 >
                   <motion.img
@@ -291,9 +291,9 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   animate="animate"
                   whileHover={{
                     scale: 1.1,
-                    boxShadow: "0 10px 25px rgba(59, 130, 246, 0.4)"
+                    boxShadow: "0 10px 25px rgba(var(--primary-rgb), 0.4)"
                   }}
-                  className="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-full shadow-lg font-semibold cursor-pointer"
+                  className="absolute -bottom-4 -right-4 bg-gradient-to-r from-primary-600 to-secondary text-white px-6 py-3 rounded-full shadow-lg font-semibold cursor-pointer"
                 >
                   <span className="mr-2">
                     🚀

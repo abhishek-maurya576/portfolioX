@@ -123,7 +123,7 @@ const Contact = React.memo(function Contact() {
         animate={{ opacity: 0.2 }}
         transition={{ duration: 2 }}
       >
-        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-blue-600/15 to-indigo-600/15 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-primary-600/15 to-secondary/15 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-purple-600/15 to-pink-600/15 rounded-full blur-3xl"></div>
       </motion.div>
 
@@ -142,7 +142,7 @@ const Contact = React.memo(function Contact() {
               className="gradient-text"
               whileHover={{
                 scale: 1.05,
-                textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+                textShadow: "0 0 20px rgba(var(--primary-rgb), 0.5)"
               }}
             >
               Touch
@@ -179,7 +179,7 @@ const Contact = React.memo(function Contact() {
                       htmlFor={field.name}
                       className="block text-frost-text-secondary mb-2"
                       animate={{
-                        color: focusedField === field.name ? "#3b82f6" : "#4a5568",
+                        color: focusedField === field.name ? "var(--primary-600)" : "#4a5568",
                         y: focusedField === field.name ? -2 : 0
                       }}
                       transition={{ duration: 0.2 }}
@@ -199,7 +199,7 @@ const Contact = React.memo(function Contact() {
                         rows={field.rows}
                         whileFocus={{
                           scale: 1.02,
-                          boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)"
+                          boxShadow: "0 0 0 3px rgba(var(--primary-rgb), 0.1)"
                         }}
                         className="w-full px-4 py-3 rounded-lg bg-frost-veil border border-silver-drift text-frost-text focus:border-frost-accent focus:outline-none transition-all duration-300 resize-none"
                         placeholder={field.placeholder}
@@ -216,7 +216,7 @@ const Contact = React.memo(function Contact() {
                         required
                         whileFocus={{
                           scale: 1.02,
-                          boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.1)"
+                          boxShadow: "0 0 0 3px rgba(var(--primary-rgb), 0.1)"
                         }}
                         className="w-full px-4 py-3 rounded-lg bg-frost-veil border border-silver-drift text-frost-text focus:border-frost-accent focus:outline-none transition-all duration-300"
                         placeholder={field.placeholder}
@@ -225,7 +225,7 @@ const Contact = React.memo(function Contact() {
 
                     {/* Focus indicator */}
                     <motion.div
-                      className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600"
+                      className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary"
                       initial={{ width: 0 }}
                       animate={{ width: focusedField === field.name ? "100%" : 0 }}
                       transition={{ duration: 0.3 }}
@@ -238,7 +238,7 @@ const Contact = React.memo(function Contact() {
                   disabled={isSubmitting}
                   whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                  className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden disabled:opacity-70"
+                  className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-secondary text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden disabled:opacity-70"
                 >
                   <AnimatePresence mode="wait">
                     {isSubmitting ? (
@@ -346,7 +346,7 @@ const Contact = React.memo(function Contact() {
                     className="flex items-center gap-3 px-4 py-3 rounded-xl bg-frost-veil/50 border border-silver-drift/50 hover:border-frost-accent/50 transition-all duration-300 group flex-1"
                     whileHover={{ x: 5 }}
                   >
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-secondary flex items-center justify-center text-white">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div className="flex-1 min-w-0">

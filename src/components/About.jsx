@@ -42,7 +42,7 @@ const About = React.memo(function About() {
   return (
     <section id="about" className="py-20 bg-transparent relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-600/15 to-transparent rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary-600/15 to-transparent rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -93,8 +93,8 @@ const About = React.memo(function About() {
                       <motion.strong
                         className="text-frost-text"
                         whileHover={{
-                          color: "#3b82f6",
-                          textShadow: "0 0 8px rgba(59, 130, 246, 0.3)"
+                          color: "var(--primary-600)",
+                          textShadow: "0 0 8px rgba(var(--primary-rgb), 0.3)"
                         }}
                       >
                         University of Allahabad
@@ -152,7 +152,7 @@ const About = React.memo(function About() {
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
                           transition={{ delay: i * 0.1, duration: 0.4 }}
-                          whileHover={{ x: 10, color: "#3b82f6" }}
+                          whileHover={{ x: 10, color: "var(--primary-600)" }}
                           className="cursor-default"
                         >
                           • {interest}

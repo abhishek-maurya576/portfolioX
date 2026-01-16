@@ -8,7 +8,7 @@ const Projects = React.memo(function Projects() {
       title: 'ForensicFlow',
       description: 'Advanced digital forensics platform for analyzing Universal Forensic Data Reports (UFDR). Built for Smart India Hackathon 2025 with AI-powered insights using Google Gemini and OpenAI GPT.',
       tech: ['Django', 'React', 'PostgreSQL', 'Celery', 'TailwindCSS'],
-      gradient: 'from-blue-600 to-indigo-600',
+      gradient: 'from-primary-600 to-secondary',
       link: 'https://forensicflow.vercel.app/',
     },
     {
@@ -67,8 +67,8 @@ const Projects = React.memo(function Projects() {
         animate={{ opacity: 0.3 }}
         transition={{ duration: 2 }}
       >
-        <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-bl from-blue-600/15 to-purple-600/15 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-tr from-indigo-600/15 to-pink-600/15 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-bl from-primary-600/15 to-secondary/15 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-tr from-secondary/15 to-tertiary/15 rounded-full blur-3xl"></div>
       </motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -86,7 +86,7 @@ const Projects = React.memo(function Projects() {
               className="gradient-text"
               whileHover={{
                 scale: 1.05,
-                textShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+                textShadow: "0 0 20px rgba(var(--primary-rgb), 0.5)"
               }}
             >
               Projects
@@ -132,7 +132,7 @@ const Projects = React.memo(function Projects() {
                 <AnimatePresence>
                   {hoveredProject === index && (
                     <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-indigo-500/5 to-purple-500/5 rounded-2xl"
+                      className="absolute inset-0 bg-gradient-to-r from-primary-500/5 via-secondary-500/5 to-tertiary-500/5 rounded-2xl"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -144,8 +144,8 @@ const Projects = React.memo(function Projects() {
                 <motion.h3
                   className="text-2xl font-bold text-frost-text mb-4 relative z-10"
                   whileHover={{
-                    color: "#3b82f6",
-                    textShadow: "0 0 10px rgba(59, 130, 246, 0.3)"
+                    color: "var(--primary-600)",
+                    textShadow: "0 0 10px rgba(var(--primary-rgb), 0.3)"
                   }}
                 >
                   {project.title}
@@ -174,7 +174,7 @@ const Projects = React.memo(function Projects() {
                       }}
                       whileHover={{
                         scale: 1.1,
-                        backgroundColor: "#3b82f6",
+                        backgroundColor: "var(--primary-600)",
                         color: "#ffffff",
                         y: -2
                       }}
