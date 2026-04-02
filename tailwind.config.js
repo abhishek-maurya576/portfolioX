@@ -6,11 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['Space Grotesk', 'Inter', 'sans-serif'],
+      },
       colors: {
         // ===== CENTRALIZED THEME COLORS =====
-        // These reference CSS variables from index.css
-
-        // Primary color palette (using CSS variables)
+        // Primary color palette - Amber/Gold (CSS variables)
         primary: {
           50: 'var(--primary-50)',
           100: 'var(--primary-100)',
@@ -25,7 +27,7 @@ export default {
           DEFAULT: 'var(--primary-600)',
         },
 
-        // Secondary color palette
+        // Secondary color palette (Warm Teal)
         secondary: {
           500: 'var(--secondary-500)',
           600: 'var(--secondary-600)',
@@ -33,27 +35,27 @@ export default {
           DEFAULT: 'var(--secondary-600)',
         },
 
-        // Tertiary color palette
+        // Tertiary color palette (Coral)
         tertiary: {
           500: 'var(--tertiary-500)',
           600: 'var(--tertiary-600)',
           DEFAULT: 'var(--tertiary-600)',
         },
 
-        // Dark theme base colors
-        'frost-veil': '#0a0a0a',
-        'polar-mist': '#0d0d0d',
-        'glacial-pearl': '#141414',
-        'silver-drift': '#2a2a2a',
-        'cloud-quartz': '#3a3a3a',
-        'frost-text': '#f5f5f5',
-        'frost-text-secondary': '#a0a0a0',
+        // Dark theme base colors - warm zinc palette
+        'frost-veil': '#09090b',
+        'polar-mist': '#0a0a0a',
+        'glacial-pearl': '#18181b',
+        'silver-drift': '#27272a',
+        'cloud-quartz': '#3f3f46',
+        'frost-text': '#fafafa',
+        'frost-text-secondary': '#a1a1aa',
 
-        // Accent colors (using CSS variables)
+        // Accent colors
         'frost-accent': 'var(--accent)',
         'frost-accent-hover': 'var(--accent-hover)',
 
-        // CSS variable-based colors for 3D folder component
+        // CSS variable-based colors
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         card: 'var(--card)',
@@ -71,4 +73,3 @@ export default {
   },
   plugins: [],
 }
-

@@ -24,9 +24,9 @@ export function AnimatedFolder({ title, projects, className, icon }) {
                 style={{
                     background: "linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(20,20,20,0.98) 100%)",
                     boxShadow: isHovered
-                        ? "0 4px 20px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255,255,255,0.05)"
+                        ? "0 4px 20px rgba(217, 119, 6, 0.3), inset 0 1px 0 rgba(255,255,255,0.05)"
                         : "0 2px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03)",
-                    border: isHovered ? "1px solid rgba(59, 130, 246, 0.5)" : "1px solid rgba(60,60,60,0.5)",
+                    border: isHovered ? "1px solid rgba(217, 119, 6, 0.5)" : "1px solid rgba(60,60,60,0.5)",
                     transform: isHovered ? "scale(1.02)" : "scale(1)",
                 }}
             >
@@ -56,7 +56,7 @@ export function AnimatedFolder({ title, projects, className, icon }) {
                     boxShadow: isHovered
                         ? "10px 10px 30px rgba(0,0,0,0.5), -8px -8px 24px rgba(40,40,40,0.3)"
                         : "6px 6px 18px rgba(0,0,0,0.4), -4px -4px 14px rgba(40,40,40,0.2)",
-                    border: isHovered ? "1px solid rgba(59, 130, 246, 0.3)" : "1px solid rgba(60,60,60,0.3)",
+                    border: isHovered ? "1px solid rgba(217, 119, 6, 0.3)" : "1px solid rgba(60,60,60,0.3)",
                     transform: isHovered ? "translateY(-4px)" : "translateY(0)",
                 }}
                 onMouseEnter={() => setIsHovered(true)}
@@ -66,7 +66,7 @@ export function AnimatedFolder({ title, projects, className, icon }) {
                 <div
                     className="absolute inset-0 rounded-2xl transition-opacity duration-500 pointer-events-none"
                     style={{
-                        background: "radial-gradient(ellipse at 50% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 70%)",
+                        background: "radial-gradient(ellipse at 50% 80%, rgba(217, 119, 6, 0.08) 0%, transparent 70%)",
                         opacity: isHovered ? 1 : 0,
                     }}
                 />
@@ -243,10 +243,10 @@ const SkillIcon = forwardRef(
                     left: "-26px",
                     top: "-34px",
                     background: isHovered
-                        ? "linear-gradient(145deg, #334155 0%, #1e293b 100%)"
-                        : "linear-gradient(145deg, #1e293b 0%, #0f172a 100%)",
+                        ? "linear-gradient(145deg, #2a2a2a 0%, #1c1c1c 100%)"
+                        : "linear-gradient(145deg, #1c1c1c 0%, #171717 100%)",
                     border: isHovered
-                        ? "1px solid rgba(59, 130, 246, 0.5)"
+                        ? "1px solid rgba(217, 119, 6, 0.5)"
                         : "1px solid rgba(255,255,255,0.1)",
                 }}
                 onMouseEnter={() => setIsHovered(true)}

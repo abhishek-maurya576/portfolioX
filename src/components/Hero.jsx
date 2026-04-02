@@ -1,6 +1,9 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { rafThrottle } from '../utils/performance'
+import { TubesBackground } from './ui/neon-flow'
+import { Sparkles, ArrowRight, Circle } from 'lucide-react'
+import { GitHubIcon, LinkedInIcon, YouTubeIcon, XIcon } from './ui/social-icons'
 
 const Hero = React.memo(function Hero({ onCTAClick }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -8,7 +11,6 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
-  // Throttled mouse move handler for better performance
   const handleMouseMove = useCallback(
     rafThrottle((e) => {
       setMousePosition({
@@ -50,10 +52,9 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
 
   const floatVariants = {
     animate: {
-      y: [-8, 8, -8],
-      rotate: [-2, 2, -2],
+      y: [-6, 6, -6],
       transition: {
-        duration: 4,
+        duration: 5,
         repeat: Infinity,
         ease: "easeInOut"
       }
@@ -72,19 +73,23 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
     }
   }
 
+  const socialLinks = [
+    { name: 'GitHub', url: 'https://github.com/abhishek-maurya576', icon: <GitHubIcon className="w-5 h-5" /> },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/abhishekmaurya9118', icon: <LinkedInIcon className="w-5 h-5" /> },
+    { name: 'YouTube', url: 'https://youtube.com/@bforbca', icon: <YouTubeIcon className="w-5 h-5" /> },
+    { name: 'Twitter', url: 'https://x.com/Abhishekm576', icon: <XIcon className="w-5 h-5" /> },
+  ]
+
   return (
     <section id="hero" className="min-h-[85vh] flex items-center pt-16 pb-12 bg-transparent relative overflow-hidden">
-      {/* Animated background elements */}
-      <motion.div
-        className="absolute inset-0 opacity-30"
-        style={{
-          x: mousePosition.x,
-          y: mousePosition.y,
-        }}
-      >
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary-600/15 to-secondary/15 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-600/15 to-pink-600/15 rounded-full blur-3xl"></div>
-      </motion.div>
+      {/* Neon Flow Background - subtle */}
+      <TubesBackground
+        className="!absolute inset-0 !min-h-0 opacity-30"
+        enableClickInteraction={true}
+      />
+
+      {/* Noise texture overlay */}
+      <div className="absolute inset-0 noise-overlay pointer-events-none z-[1]" />
 
       <motion.div
         className="container mx-auto px-6 py-12 relative z-10"
@@ -96,7 +101,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
           animate="visible"
           className="max-w-6xl mx-auto"
         >
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
             <div>
               <motion.div
@@ -106,28 +111,15 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   x: 10,
                   transition: { type: "spring", stiffness: 400, damping: 10 }
                 }}
-                className="text-frost-accent font-semibold mb-4 inline-block cursor-default"
+                className="text-primary-400 font-medium mb-4 inline-flex items-center gap-2 cursor-default"
               >
-                <motion.span
-                  animate={{
-                    rotate: [0, 14, -8, 0],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatDelay: 4,
-                    ease: "easeInOut"
-                  }}
-                  className="inline-block mr-2"
-                >
-                  👋
-                </motion.span>
-                Welcome to my portfolio
+                <Sparkles className="w-4 h-4" />
+                <span className="text-sm tracking-widest uppercase">Welcome to my portfolio</span>
               </motion.div>
 
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-6xl font-extrabold text-frost-text leading-tight mb-4"
+                className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-frost-text leading-[1.1] mb-5 tracking-tight"
               >
                 Hi, I'm{' '}
                 <span className="gradient-text inline-block">
@@ -137,7 +129,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
 
               <motion.p
                 variants={itemVariants}
-                className="text-lg text-frost-text-secondary max-w-xl mb-6 leading-relaxed"
+                className="text-lg text-frost-text-secondary max-w-xl mb-8 leading-relaxed"
               >
                 <motion.span
                   initial={{ opacity: 0 }}
@@ -162,17 +154,18 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   initial="rest"
                   whileHover="hover"
                   whileTap={{ scale: 0.95 }}
-                  className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-secondary text-white font-semibold shadow-lg overflow-hidden"
+                  className="group relative px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-frost-veil font-semibold shadow-lg shadow-primary-600/20 overflow-hidden"
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-secondary to-tertiary opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 bg-gradient-to-r from-primary-500 to-tertiary opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.3 }}
                   />
-                  <span className="relative z-10">
+                  <span className="relative z-10 flex items-center gap-2">
                     View My Work
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <motion.div
-                    className="absolute inset-0 bg-white/20"
+                    className="absolute inset-0 bg-white/10"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
                     transition={{ duration: 0.6 }}
@@ -185,47 +178,38 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   initial="rest"
                   whileHover="hover"
                   whileTap={{ scale: 0.95 }}
-                  className="group px-8 py-4 rounded-full border-2 border-silver-drift text-frost-text relative overflow-hidden backdrop-blur-sm"
+                  className="group px-8 py-4 rounded-full border border-silver-drift text-frost-text relative overflow-hidden backdrop-blur-sm hover:border-primary-600/50 transition-colors duration-300"
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary-900/30 to-secondary-700/30 opacity-0 group-hover:opacity-100"
+                    className="absolute inset-0 bg-gradient-to-r from-primary-900/20 to-primary-800/20 opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.3 }}
                   />
                   <span className="relative z-10">Contact Me</span>
                 </motion.a>
               </motion.div>
 
+              {/* Social Links with SVG Icons */}
               <motion.div
                 variants={itemVariants}
-                className="flex gap-4 mt-6"
+                className="flex gap-3 mt-8"
               >
-                {[
-                  { name: 'GitHub', url: 'https://github.com/abhishek-maurya576' },
-                  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/abhishekmaurya9118' },
-                  { name: 'YouTube', url: 'https://youtube.com/@bforbca' },
-                  { name: 'Twitter', url: 'https://x.com/Abhishekm576' },
-                ].map((social, index) => (
+                {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.name}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5 + index * 0.1, duration: 0.5 }}
                     whileHover={{
-                      scale: 1.2,
-                      y: -6,
-                      color: "var(--primary-600)",
-                      textShadow: "0 4px 8px rgba(var(--primary-rgb), 0.3)"
+                      scale: 1.15,
+                      y: -4,
                     }}
-                    className="text-frost-text-secondary relative group"
+                    className="w-10 h-10 rounded-full border border-silver-drift/60 flex items-center justify-center text-frost-text-secondary hover:text-primary-400 hover:border-primary-600/50 transition-colors duration-300"
                   >
-                    <motion.span
-                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary group-hover:w-full"
-                      transition={{ duration: 0.3 }}
-                    />
-                    {social.name}
+                    {social.icon}
                   </motion.a>
                 ))}
               </motion.div>
@@ -234,73 +218,53 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
             {/* Profile Image */}
             <motion.div
               variants={itemVariants}
-              className="relative"
+              className="relative flex justify-center"
             >
               <motion.div
-                whileHover={{ scale: 1.05, rotateY: 5 }}
+                whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="relative w-full max-w-xs mx-auto"
+                className="relative w-full max-w-sm"
                 style={{
-                  x: mousePosition.x * 0.5,
-                  y: mousePosition.y * 0.5,
+                  x: mousePosition.x * 0.3,
+                  y: mousePosition.y * 0.3,
                 }}
               >
-                {/* Animated decorative background */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/20 via-secondary-500/20 to-tertiary-500/20 rounded-3xl blur-2xl" />
+                {/* Glow ring behind image */}
+                <div className="absolute -inset-1 bg-gradient-to-tr from-primary-500/30 via-primary-600/20 to-tertiary-500/20 rounded-3xl blur-2xl opacity-60" />
 
-                {/* Image container with enhanced effects */}
+                {/* Image container */}
                 <motion.div
-                  className="relative rounded-3xl overflow-hidden border-4 border-frost-veil shadow-2xl"
+                  className="relative rounded-3xl overflow-hidden border border-silver-drift/50 shadow-2xl shadow-black/50"
                   whileHover={{
-                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(var(--primary-rgb), 0.3)"
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(var(--primary-rgb), 0.2)"
                   }}
                 >
                   <motion.img
                     src="/profile_img.jpg"
                     alt="Abhishek Maurya"
                     className="w-full h-auto object-cover"
-                    initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+                    initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                     transition={{ duration: 1.2, delay: 0.5 }}
-                    whileHover={{ scale: 1.1 }}
                   />
 
-                  {/* Enhanced gradient overlay */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-frost-text/10 to-transparent"
-                    whileHover={{ opacity: 0.5 }}
-                  />
-
-                  {/* Shimmer effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "100%" }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatDelay: 3,
-                      ease: "easeInOut"
-                    }}
-                  />
+                  {/* Subtle overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-frost-veil/30 via-transparent to-transparent" />
                 </motion.div>
 
-                {/* Enhanced floating badge */}
+                {/* Floating badge - premium, no emoji */}
                 <motion.div
                   variants={floatVariants}
                   animate="animate"
                   whileHover={{
-                    scale: 1.1,
-                    boxShadow: "0 10px 25px rgba(var(--primary-rgb), 0.4)"
+                    scale: 1.05,
+                    boxShadow: "0 10px 25px rgba(var(--primary-rgb), 0.3)"
                   }}
-                  className="absolute -bottom-4 -right-4 bg-gradient-to-r from-primary-600 to-secondary text-white px-6 py-3 rounded-full shadow-lg font-semibold cursor-pointer"
+                  className="absolute -bottom-3 -right-3 bg-gradient-to-r from-primary-600 to-primary-500 text-frost-veil px-5 py-2.5 rounded-full shadow-lg shadow-primary-600/30 font-medium text-sm cursor-pointer flex items-center gap-2"
                 >
-                  <span className="mr-2">
-                    🚀
-                  </span>
+                  <Circle className="w-2.5 h-2.5 fill-current animate-pulse" />
                   Available for Work
                 </motion.div>
-
               </motion.div>
             </motion.div>
           </div>

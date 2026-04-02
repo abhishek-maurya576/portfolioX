@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useMemo } from 'react'
+import React, { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MicroExpander } from './ui/micro-expander'
 import { GitHubIcon, LinkedInIcon, YouTubeIcon, InstagramIcon, XIcon } from './ui/social-icons'
-import { Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin, CheckCircle, XCircle } from 'lucide-react'
 
 const Contact = React.memo(function Contact() {
   const [formData, setFormData] = useState({
@@ -12,7 +12,7 @@ const Contact = React.memo(function Contact() {
   })
   const [focusedField, setFocusedField] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
+  const [submitStatus, setSubmitStatus] = useState(null)
 
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault()
@@ -20,12 +20,10 @@ const Contact = React.memo(function Contact() {
     setSubmitStatus(null)
 
     try {
-      // Create FormData object for Web3Forms
       const formDataObj = new FormData(e.target)
       formDataObj.append('access_key', import.meta.env.VITE_WEB3FORMS_ACCESS_KEY)
       formDataObj.append('subject', `New Portfolio Contact from ${formData.name}`)
 
-      // Web3Forms API endpoint
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formDataObj
@@ -36,8 +34,6 @@ const Contact = React.memo(function Contact() {
       if (result.success) {
         setSubmitStatus('success')
         setFormData({ name: '', email: '', message: '' })
-
-        // Auto-hide success message after 5 seconds
         setTimeout(() => setSubmitStatus(null), 5000)
       } else {
         setSubmitStatus('error')
@@ -63,31 +59,31 @@ const Contact = React.memo(function Contact() {
       name: 'GitHub',
       url: 'https://github.com/abhishek-maurya576',
       icon: <GitHubIcon className="w-5 h-5" />,
-      hoverClass: 'hover:text-gray-900 hover:bg-gray-100'
+      hoverClass: 'hover:text-frost-text hover:bg-silver-drift/50'
     },
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/abhishekmaurya9118',
       icon: <LinkedInIcon className="w-5 h-5" />,
-      hoverClass: 'hover:text-[#0A66C2] hover:bg-blue-50'
+      hoverClass: 'hover:text-secondary-500 hover:bg-secondary-600/10'
     },
     {
       name: 'YouTube',
       url: 'https://youtube.com/@bforbca',
       icon: <YouTubeIcon className="w-5 h-5" />,
-      hoverClass: 'hover:text-[#FF0000] hover:bg-red-50'
+      hoverClass: 'hover:text-red-400 hover:bg-red-600/10'
     },
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/zymprox',
       icon: <InstagramIcon className="w-5 h-5" />,
-      hoverClass: 'hover:text-[#E4405F] hover:bg-pink-50'
+      hoverClass: 'hover:text-tertiary-500 hover:bg-tertiary-500/10'
     },
     {
       name: 'Twitter',
       url: 'https://x.com/Abhishekm576',
       icon: <XIcon className="w-5 h-5" />,
-      hoverClass: 'hover:text-gray-900 hover:bg-gray-100'
+      hoverClass: 'hover:text-frost-text hover:bg-silver-drift/50'
     },
   ]
 
@@ -115,16 +111,19 @@ const Contact = React.memo(function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-transparent relative overflow-hidden">
-      {/* Background decoration */}
+    <section id="contact" className="py-24 bg-transparent relative overflow-hidden">
+      {/* Section divider */}
+      <div className="section-divider absolute top-0" />
+
+      {/* Background decoration — no purple */}
       <motion.div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-20 pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.2 }}
         transition={{ duration: 2 }}
       >
-        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-primary-600/15 to-secondary/15 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-purple-600/15 to-pink-600/15 rounded-full blur-3xl"></div>
+        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-primary-600/10 to-secondary/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-tl from-tertiary/10 to-primary-400/8 rounded-full blur-3xl" />
       </motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -136,18 +135,22 @@ const Contact = React.memo(function Contact() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-frost-text mb-6"
+            className="text-4xl md:text-5xl font-display font-bold text-frost-text mb-4"
           >
             Get In <motion.span
               className="gradient-text"
               whileHover={{
                 scale: 1.05,
-                textShadow: "0 0 20px rgba(var(--primary-rgb), 0.5)"
               }}
             >
               Touch
             </motion.span>
           </motion.h2>
+
+          <motion.div
+            variants={itemVariants}
+            className="w-16 h-1 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full mb-6"
+          />
 
           <motion.p
             variants={itemVariants}
@@ -177,9 +180,9 @@ const Contact = React.memo(function Contact() {
                   >
                     <motion.label
                       htmlFor={field.name}
-                      className="block text-frost-text-secondary mb-2"
+                      className="block text-sm font-medium text-frost-text-secondary mb-2 uppercase tracking-wider"
                       animate={{
-                        color: focusedField === field.name ? "var(--primary-600)" : "#4a5568",
+                        color: focusedField === field.name ? "var(--primary-400)" : "",
                         y: focusedField === field.name ? -2 : 0
                       }}
                       transition={{ duration: 0.2 }}
@@ -198,10 +201,9 @@ const Contact = React.memo(function Contact() {
                         required
                         rows={field.rows}
                         whileFocus={{
-                          scale: 1.02,
-                          boxShadow: "0 0 0 3px rgba(var(--primary-rgb), 0.1)"
+                          boxShadow: "0 0 0 2px rgba(var(--primary-rgb), 0.15)"
                         }}
-                        className="w-full px-4 py-3 rounded-lg bg-frost-veil border border-silver-drift text-frost-text focus:border-frost-accent focus:outline-none transition-all duration-300 resize-none"
+                        className="w-full px-4 py-3 rounded-xl bg-glacial-pearl border border-silver-drift/50 text-frost-text focus:border-primary-600/50 focus:outline-none transition-all duration-300 resize-none"
                         placeholder={field.placeholder}
                       />
                     ) : (
@@ -215,17 +217,16 @@ const Contact = React.memo(function Contact() {
                         onBlur={() => setFocusedField(null)}
                         required
                         whileFocus={{
-                          scale: 1.02,
-                          boxShadow: "0 0 0 3px rgba(var(--primary-rgb), 0.1)"
+                          boxShadow: "0 0 0 2px rgba(var(--primary-rgb), 0.15)"
                         }}
-                        className="w-full px-4 py-3 rounded-lg bg-frost-veil border border-silver-drift text-frost-text focus:border-frost-accent focus:outline-none transition-all duration-300"
+                        className="w-full px-4 py-3 rounded-xl bg-glacial-pearl border border-silver-drift/50 text-frost-text focus:border-primary-600/50 focus:outline-none transition-all duration-300"
                         placeholder={field.placeholder}
                       />
                     )}
 
                     {/* Focus indicator */}
                     <motion.div
-                      className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary"
+                      className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-primary-600 to-primary-400 rounded-full"
                       initial={{ width: 0 }}
                       animate={{ width: focusedField === field.name ? "100%" : 0 }}
                       transition={{ duration: 0.3 }}
@@ -236,9 +237,9 @@ const Contact = React.memo(function Contact() {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                  className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-secondary text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden disabled:opacity-70"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className="w-full px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-frost-veil font-semibold shadow-lg shadow-primary-600/20 hover:shadow-xl transition-all duration-300 relative overflow-hidden disabled:opacity-70"
                 >
                   <AnimatePresence mode="wait">
                     {isSubmitting ? (
@@ -250,7 +251,7 @@ const Contact = React.memo(function Contact() {
                         className="flex items-center justify-center gap-2"
                       >
                         <motion.div
-                          className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                          className="w-4 h-4 border-2 border-frost-veil/30 border-t-frost-veil rounded-full"
                           animate={{ rotate: 360 }}
                           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                         />
@@ -268,35 +269,27 @@ const Contact = React.memo(function Contact() {
                     )}
                   </AnimatePresence>
 
-                  {/* Shimmer effect */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "100%" }}
                     transition={{ duration: 0.6 }}
                   />
                 </motion.button>
 
-                {/* Success/Error Messages */}
+                {/* Success/Error Messages — SVG icons instead of emojis */}
                 <AnimatePresence>
                   {submitStatus === 'success' && (
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="mt-4 p-4 rounded-lg bg-green-900/30 border border-green-700/50 flex items-center gap-3"
+                      className="mt-4 p-4 rounded-xl bg-green-900/20 border border-green-700/30 flex items-center gap-3"
                     >
-                      <motion.span
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.2, type: "spring", stiffness: 500 }}
-                        className="text-2xl"
-                      >
-                        ✅
-                      </motion.span>
+                      <CheckCircle className="w-6 h-6 text-green-400 shrink-0" />
                       <div>
-                        <p className="text-green-300 font-semibold">Message sent successfully!</p>
-                        <p className="text-green-400/80 text-sm">Thank you for reaching out. I'll get back to you soon!</p>
+                        <p className="text-green-300 font-semibold text-sm">Message sent successfully!</p>
+                        <p className="text-green-400/80 text-xs">Thank you for reaching out. I'll get back to you soon!</p>
                       </div>
                     </motion.div>
                   )}
@@ -306,19 +299,12 @@ const Contact = React.memo(function Contact() {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="mt-4 p-4 rounded-lg bg-red-900/30 border border-red-700/50 flex items-center gap-3"
+                      className="mt-4 p-4 rounded-xl bg-red-900/20 border border-red-700/30 flex items-center gap-3"
                     >
-                      <motion.span
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1, rotate: [0, -10, 10, -10, 0] }}
-                        transition={{ delay: 0.2 }}
-                        className="text-2xl"
-                      >
-                        ❌
-                      </motion.span>
+                      <XCircle className="w-6 h-6 text-red-400 shrink-0" />
                       <div>
-                        <p className="text-red-300 font-semibold">Oops! Something went wrong.</p>
-                        <p className="text-red-400/80 text-sm">Please try again or email me directly at maurya972137@gmail.com</p>
+                        <p className="text-red-300 font-semibold text-sm">Oops! Something went wrong.</p>
+                        <p className="text-red-400/80 text-xs">Please try again or email me directly at maurya972137@gmail.com</p>
                       </div>
                     </motion.div>
                   )}
@@ -330,11 +316,10 @@ const Contact = React.memo(function Contact() {
               variants={itemVariants}
               className="space-y-6 md:col-span-7"
             >
-              {/* Compact Contact Info Card */}
+              {/* Contact Info Card */}
               <motion.div
                 className="glass-effect rounded-2xl p-6"
                 whileHover={{
-                  scale: 1.02,
                   y: -3,
                   transition: { duration: 0.3 }
                 }}
@@ -343,37 +328,37 @@ const Contact = React.memo(function Contact() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-6">
                   <motion.a
                     href="mailto:maurya972137@gmail.com"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-frost-veil/50 border border-silver-drift/50 hover:border-frost-accent/50 transition-all duration-300 group flex-1"
-                    whileHover={{ x: 5 }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-frost-veil/50 border border-silver-drift/30 hover:border-primary-600/30 transition-all duration-300 group flex-1"
+                    whileHover={{ x: 4 }}
                   >
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-500 to-secondary flex items-center justify-center text-white">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-500 flex items-center justify-center text-frost-veil">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs text-frost-text-secondary uppercase tracking-wide">Email</p>
-                      <p className="text-frost-text font-medium text-sm truncate group-hover:text-frost-accent transition-colors">
+                      <p className="text-xs text-frost-text-secondary uppercase tracking-wider">Email</p>
+                      <p className="text-frost-text font-medium text-sm truncate group-hover:text-primary-400 transition-colors">
                         maurya972137@gmail.com
                       </p>
                     </div>
                   </motion.a>
 
                   <motion.div
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-frost-veil/50 border border-silver-drift/50 flex-1"
-                    whileHover={{ x: 5 }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-frost-veil/50 border border-silver-drift/30 flex-1"
+                    whileHover={{ x: 4 }}
                   >
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-tertiary-500 to-tertiary-600 flex items-center justify-center text-frost-veil">
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs text-frost-text-secondary uppercase tracking-wide">Location</p>
+                      <p className="text-xs text-frost-text-secondary uppercase tracking-wider">Location</p>
                       <p className="text-frost-text font-medium text-sm">Allahabad, India</p>
                     </div>
                   </motion.div>
                 </div>
 
-                {/* Social Links with MicroExpander */}
-                <div className="pt-4 border-t border-silver-drift/50">
-                  <p className="text-xs text-frost-text-secondary uppercase tracking-wide mb-4">Connect With Me</p>
+                {/* Social Links */}
+                <div className="pt-4 border-t border-silver-drift/30">
+                  <p className="text-xs text-frost-text-secondary uppercase tracking-wider mb-4">Connect With Me</p>
                   <div className="flex flex-wrap items-center gap-2">
                     {socialLinks.map((social, index) => (
                       <motion.div
@@ -406,7 +391,7 @@ const Contact = React.memo(function Contact() {
                 </div>
               </motion.div>
 
-              {/* Quick Stats / Availability Badge */}
+              {/* Availability Badge */}
               <motion.div
                 className="glass-effect rounded-xl p-4 flex items-center gap-4"
                 initial={{ opacity: 0, y: 20 }}
@@ -415,8 +400,8 @@ const Contact = React.memo(function Contact() {
                 transition={{ delay: 0.3 }}
               >
                 <div className="relative">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75"></div>
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                  <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75" />
                 </div>
                 <div>
                   <p className="text-frost-text font-medium text-sm">Available for new projects</p>
