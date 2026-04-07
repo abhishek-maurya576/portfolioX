@@ -73,6 +73,7 @@ const Skills = React.memo(function Skills() {
   ]
 
   const hackathons = [
+    'Gen AI Hackathon 2025: Winner (Project: AgriVision, AI-powered agricultural advisory system)',
     'Smart India Hackathon 2025 (Forensic Flow MVP)',
     'GDG on Campus Solution Challenge – Participant, 2025',
     'Bharatiya Antariksh Hackathon 2025 – Participant 2025',

@@ -6,6 +6,14 @@ const Projects = React.memo(function Projects() {
   const [hoveredProject, setHoveredProject] = useState(null)
   const projects = [
     {
+      title: 'Pronunex',
+      description: 'AI-driven pronunciation improvement platform with phoneme-level speech analysis using Wav2Vec2 and cosine similarity scoring. Features adaptive practice, real-time feedback, and interactive progress dashboards.',
+      tech: ['React', 'Django', 'PostgreSQL', 'Wav2Vec2', 'AI/NLP'],
+      gradient: 'from-primary-500 to-tertiary-500',
+      link: 'https://pronunex.iabhishek.in',
+      image: '/project_pronunex.png',
+    },
+    {
       title: 'ForensicFlow',
       description: 'Advanced digital forensics platform for analyzing Universal Forensic Data Reports (UFDR). Built for Smart India Hackathon 2025 with AI-powered insights using Google Gemini and OpenAI GPT.',
       tech: ['Django', 'React', 'PostgreSQL', 'Celery', 'TailwindCSS'],

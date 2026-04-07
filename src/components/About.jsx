@@ -53,21 +53,69 @@ const About = React.memo(function About() {
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
-      title: "Work Experience",
+      title: "Experience",
       content: (
-        <div className="text-frost-text-secondary">
-          <p className="font-semibold text-frost-text">Google Students Ambassador</p>
-          <p className="text-sm mt-1">Google | Jul 2025 – Dec 2025</p>
-          <ul className="mt-3 space-y-2 text-sm">
-            <li className="flex items-start gap-2">
-              <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
-              Engaged in tech initiatives and student community programs
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
-              Orchestrated 5+ workshops and skill development events, leading to a 20% increase in student engagement with Google technologies on campus
-            </li>
-          </ul>
+        <div className="text-frost-text-secondary space-y-4">
+          {/* AI Intern */}
+          <div>
+            <div className="flex items-center justify-between flex-wrap gap-1">
+              <p className="font-semibold text-frost-text">AI Intern / Trainee</p>
+              <span className="text-xs text-primary-400 font-medium">Jan 2026 – Mar 2026</span>
+            </div>
+            <p className="text-sm text-frost-text-secondary/80 mt-0.5">Infosys Springboard</p>
+            <ul className="mt-2 space-y-1.5 text-sm">
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
+                Built backend APIs and NLP pipelines for Pronunex — an AI pronunciation assessment platform
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
+                Implemented audio preprocessing and phoneme alignment using Python, Whisper, and Hugging Face Transformers
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
+                Wrote unit tests with pytest to ensure reliability of scoring pipelines
+              </li>
+            </ul>
+          </div>
+
+          <div className="w-full h-px bg-silver-drift/30" />
+
+          {/* Google Ambassador */}
+          <div>
+            <div className="flex items-center justify-between flex-wrap gap-1">
+              <p className="font-semibold text-frost-text">Google Students Ambassador</p>
+              <span className="text-xs text-primary-400 font-medium">Jul 2025 – Dec 2025</span>
+            </div>
+            <p className="text-sm text-frost-text-secondary/80 mt-0.5">Google</p>
+            <ul className="mt-2 space-y-1.5 text-sm">
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
+                Directed 5+ technical workshops on Google ecosystem technologies across campus
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
+                Managed community engagement across CMP Degree College, boosting student participation
+              </li>
+            </ul>
+          </div>
+
+          <div className="w-full h-px bg-silver-drift/30" />
+
+          {/* Workshop Speaker */}
+          <div>
+            <div className="flex items-center justify-between flex-wrap gap-1">
+              <p className="font-semibold text-frost-text">Git & GitHub Workshop — Speaker</p>
+              <span className="text-xs text-primary-400 font-medium">Apr 2025</span>
+            </div>
+            <p className="text-sm text-frost-text-secondary/80 mt-0.5">CMP Degree College, Prayagraj</p>
+            <ul className="mt-2 space-y-1.5 text-sm">
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-primary-500 mt-2 shrink-0" />
+                Conducted an offline workshop for 60–70 students covering version control, branching, PRs, and collaborative workflows
+              </li>
+            </ul>
+          </div>
         </div>
       )
     },
