@@ -240,7 +240,7 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   }}
                 >
                   <motion.img
-                    src="/profile_img.jpg"
+                    src="/profile_img.png"
                     alt="Abhishek Maurya"
                     className="w-full h-auto object-cover"
                     initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
