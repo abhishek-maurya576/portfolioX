@@ -136,14 +136,14 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1, duration: 0.8 }}
                 >
-                  BCA student & aspiring Software Engineer.
+                  BCA Graduate & aspiring Graduate Engineer Trainee.
                 </motion.span>{' '}
                 <motion.span
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.3, duration: 0.8 }}
                 >
-                  I build modern digital experiences with clean code and thoughtful design.
+                  I build backend systems, AI/ML pipelines, and modern digital experiences.
                 </motion.span>
               </motion.p>
 
@@ -185,6 +185,24 @@ const Hero = React.memo(function Hero({ onCTAClick }) {
                     transition={{ duration: 0.3 }}
                   />
                   <span className="relative z-10">Contact Me</span>
+                </motion.a>
+
+                <motion.a
+                  href="/Abhishek_Maurya_Resume_.pdf"
+                  download
+                  variants={magneticVariants}
+                  initial="rest"
+                  whileHover="hover"
+                  whileTap={{ scale: 0.95 }}
+                  className="group px-8 py-4 rounded-full border border-primary-600/40 text-primary-400 relative overflow-hidden backdrop-blur-sm hover:border-primary-500 hover:bg-primary-600/10 transition-colors duration-300 flex items-center gap-2"
+                >
+                  {/* Download icon SVG */}
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  <span className="relative z-10">Resume</span>
                 </motion.a>
               </motion.div>
 

@@ -47,7 +47,7 @@ const About = React.memo(function About() {
         <div className="text-frost-text-secondary">
           <p className="font-semibold text-frost-text">Bachelor of Computer Applications (BCA)</p>
           <p className="text-sm mt-1">University of Allahabad, Prayagraj</p>
-          <p className="text-sm text-frost-text-secondary/80 mt-1">Oct 2023 – Jun 2026</p>
+          <p className="text-sm text-frost-text-secondary/80 mt-1">Oct 2023 – Jun 2026 | CGPA 8.29</p>
         </div>
       )
     },
@@ -106,7 +106,7 @@ const About = React.memo(function About() {
           <div>
             <div className="flex items-center justify-between flex-wrap gap-1">
               <p className="font-semibold text-frost-text">Git & GitHub Workshop — Speaker</p>
-              <span className="text-xs text-primary-400 font-medium">Apr 2025</span>
+              <span className="text-xs text-primary-400 font-medium"> 17 Apr 2025</span>
             </div>
             <p className="text-sm text-frost-text-secondary/80 mt-0.5">CMP Degree College, Prayagraj</p>
             <ul className="mt-2 space-y-1.5 text-sm">
@@ -125,6 +125,7 @@ const About = React.memo(function About() {
       content: (
         <ul className="text-frost-text-secondary space-y-2.5">
           {[
+            "Cloud Computing (OCI & AWS)",
             "App Development (Android & Web)",
             "Artificial Intelligence & Machine Learning",
             "Open Source Contributions",
@@ -187,9 +188,9 @@ const About = React.memo(function About() {
               className="space-y-6"
             >
               {[
-                "I'm a passionate BCA student at the University of Allahabad, diving deep into the world of software development and technology.",
-                "My journey in tech is driven by curiosity and a desire to build meaningful projects. From creating real-time chat applications to exploring AI-powered tools, I love turning ideas into reality through code.",
-                "When I'm not coding, you'll find me creating educational content on YouTube, helping fellow students navigate their academic journey, or exploring the latest trends in web development and artificial intelligence."
+                "BCA graduate with hands-on experience in backend development, AI/ML, and configuration-driven project work — skilled in building APIs, NLP pipelines, and technical documentation.",
+                "Built Pronunex (AI pronunciation platform) during an Infosys AI internship, and won the Gen AI Hackathon 2025 with AgriVision — an LLM-powered crop disease advisory system.",
+                "When not building, I run the B for BCA YouTube channel (300+ subscribers), creating educational content — and actively explore open-source contributions and the latest in AI."
               ].map((text, index) => (
                 <motion.p
                   key={index}
@@ -206,16 +207,16 @@ const About = React.memo(function About() {
                 >
                   {index === 0 ? (
                     <>
-                      I'm a passionate BCA student at the{' '}
+                      BCA graduate with hands-on experience in{' '}
                       <motion.strong
                         className="text-frost-text"
                         whileHover={{
                           color: "var(--primary-400)",
                         }}
                       >
-                        University of Allahabad
+                        backend development, AI/ML & NLP
                       </motion.strong>
-                      , diving deep into the world of software development and technology.
+                      {' '}— skilled in building APIs, pipelines, and meaningful products.
                     </>
                   ) : (
                     text
