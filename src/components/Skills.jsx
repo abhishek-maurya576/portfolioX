@@ -42,6 +42,7 @@ const Skills = React.memo(function Skills() {
       projects: [
         { id: 'sql', title: 'MySQL', image: getSkillIconUrl('mysql') },
         { id: 'postgresql', title: 'PostgreSQL', image: getSkillIconUrl('postgres') },
+        { id: 'supabase', title: 'Supabase', image: getSkillIconUrl('supabase') },
       ]
     },
     {
@@ -57,6 +58,16 @@ const Skills = React.memo(function Skills() {
         { id: 'windows', title: 'Windows', image: getSkillIconUrl('windows') },
       ]
     },
+    {
+      title: 'AI & ML',
+      icon: <Layers className="w-5 h-5" />,
+      projects: [
+        { id: 'pytorch', title: 'PyTorch', image: getSkillIconUrl('pytorch') },
+        { id: 'sklearn', title: 'scikit-learn', image: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg' },
+        { id: 'openai', title: 'OpenAI', image: 'https://skillicons.dev/icons?i=openai&theme=light' },
+        { id: 'tensorflow', title: 'TensorFlow', image: getSkillIconUrl('tensorflow') },
+      ]
+    },
   ]
 
   const softSkills = [
@@ -70,6 +81,7 @@ const Skills = React.memo(function Skills() {
   const certifications = [
     'OCI AI Foundations (Oracle) - Oct 2025',
     'Postman API Fundamentals - Oct 2024',
+    'Java & C Programming (KG Coding)',
   ]
 
   const hackathons = [
