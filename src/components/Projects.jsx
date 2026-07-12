@@ -14,6 +14,14 @@ const Projects = React.memo(function Projects() {
       image: '/project_pronunex.png',
     },
     {
+      title: 'AgriVision',
+      description: 'Gen AI Hackathon 2025 Winner — AI-powered crop disease detection platform. Engineered a custom + LLM pipeline converting crop-disease predictions into natural-language treatment recommendations.',
+      tech: ['Flask', 'LLM', 'Gen AI', 'Python'],
+      gradient: 'from-emerald-500 to-primary-500',
+      link: 'https://github.com/abhishek-maurya576',
+      image: '/project_agrivision.png',
+    },
+    {
       title: 'ForensicFlow',
       description: 'Advanced digital forensics platform for analyzing Universal Forensic Data Reports (UFDR). Built for Smart India Hackathon 2025 with AI-powered insights using Google Gemini and OpenAI GPT.',
       tech: ['Django', 'React', 'PostgreSQL', 'Celery', 'TailwindCSS'],
