@@ -89,7 +89,23 @@ const Header = React.memo(function Header() {
             })}
           </motion.nav>
 
-          {/* CTA Button */}
+          {/* Resume + CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <motion.a
+              href="/Abhishek_Maurya_Resume_.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-silver-drift/50 text-frost-text-secondary hover:text-primary-400 hover:border-primary-600/40 text-sm font-medium transition-all duration-300"
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Resume
+            </motion.a>
+
           <motion.a
             href="#contact"
             whileHover={{
@@ -97,7 +113,7 @@ const Header = React.memo(function Header() {
               boxShadow: "0 10px 25px rgba(var(--primary-rgb), 0.25)"
             }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:block px-6 py-2.5 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-frost-veil font-semibold text-sm shadow-md shadow-primary-600/20 hover:shadow-lg transition-all duration-300 relative overflow-hidden"
+            className="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary-600 to-primary-500 text-frost-veil font-semibold text-sm shadow-md shadow-primary-600/20 hover:shadow-lg transition-all duration-300 relative overflow-hidden"
           >
             <span className="relative z-10">Get in Touch</span>
             <motion.div
@@ -107,6 +123,7 @@ const Header = React.memo(function Header() {
               transition={{ duration: 0.6 }}
             />
           </motion.a>
+          </div>
         </div>
       </div>
     </motion.header>
