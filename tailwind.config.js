@@ -69,6 +69,30 @@ export default {
         'folder-front': 'var(--folder-front)',
         'folder-tab': 'var(--folder-tab)',
       },
+      animation: {
+        'cursor-blink': 'cursor-blink 1s step-end infinite',
+        'timeline-pulse': 'timeline-pulse 2s ease-in-out infinite',
+        'badge-shimmer': 'badge-shimmer 3s ease-in-out infinite',
+      },
+      keyframes: {
+        'cursor-blink': {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0 },
+        },
+        'timeline-pulse': {
+          '0%, 100%': {
+            boxShadow: '0 0 0 3px rgba(217, 119, 6, 0.3), 0 0 12px rgba(217, 119, 6, 0.2)',
+          },
+          '50%': {
+            boxShadow: '0 0 0 6px rgba(217, 119, 6, 0.15), 0 0 20px rgba(217, 119, 6, 0.35)',
+          },
+        },
+        'badge-shimmer': {
+          '0%': { left: '-100%' },
+          '50%': { left: '150%' },
+          '100%': { left: '150%' },
+        },
+      },
     },
   },
   plugins: [],

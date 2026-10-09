@@ -1,116 +1,162 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
+import { GitHubIcon } from './ui/social-icons'
+
+// Category filter tabs
+const CATEGORIES = ['All', 'AI & ML', 'Backend & Web', 'Mobile']
+
+// Badge color mapping per project gradient
+const BADGE_COLORS = {
+  'from-primary-500 to-tertiary-500': '',
+  'from-emerald-500 to-primary-500': 'tech-badge-emerald',
+  'from-primary-600 to-primary-400': '',
+  'from-tertiary-500 to-primary-500': 'tech-badge-coral',
+  'from-secondary-500 to-secondary-700': 'tech-badge-teal',
+  'from-tertiary to-primary-400': 'tech-badge-coral',
+}
+
+const PROJECTS_DATA = [
+  {
+    id: 'pronunex',
+    title: 'Pronunex',
+    category: 'AI & ML',
+    flagshipBadge: 'Infosys AI Internship',
+    description: 'AI-driven pronunciation improvement platform with phoneme-level speech analysis using Wav2Vec2 and cosine similarity scoring. Features adaptive practice, real-time feedback, and interactive progress dashboards.',
+    tech: ['React', 'Django', 'PostgreSQL', 'Wav2Vec2', 'AI/NLP'],
+    gradient: 'from-primary-500 to-tertiary-500',
+    liveUrl: 'https://pronunex.iabhishek.in',
+    githubUrl: 'https://github.com/abhishek-maurya576',
+    image: '/project_pronunex.png',
+  },
+  {
+    id: 'agrivision',
+    title: 'AgriVision',
+    category: 'AI & ML',
+    flagshipBadge: 'Hackathon Winner 2025',
+    description: 'Gen AI Hackathon 2025 Winner — AI-powered crop disease detection platform. Engineered a custom + LLM pipeline converting crop-disease predictions into natural-language treatment recommendations.',
+    tech: ['Flask', 'LLM', 'Gen AI', 'Python'],
+    gradient: 'from-emerald-500 to-primary-500',
+    liveUrl: null,
+    githubUrl: 'https://github.com/abhishek-maurya576',
+    image: '/project_agrivision.png',
+  },
+  {
+    id: 'forensicflow',
+    title: 'ForensicFlow',
+    category: 'Backend & Web',
+    flagshipBadge: 'Smart India Hackathon',
+    description: 'Advanced digital forensics platform for analyzing Universal Forensic Data Reports (UFDR). Built for Smart India Hackathon 2025 with AI-powered insights using Google Gemini and OpenAI GPT.',
+    tech: ['Django', 'React', 'PostgreSQL', 'Celery', 'TailwindCSS'],
+    gradient: 'from-primary-600 to-primary-400',
+    liveUrl: 'https://forensicflow.vercel.app/',
+    githubUrl: 'https://github.com/abhishek-maurya576',
+    image: '/project_forensicflow.png',
+  },
+  {
+    id: 'predictor',
+    title: 'Student Performance Predictor',
+    category: 'Backend & Web',
+    flagshipBadge: null,
+    description: 'ML-powered Django application predicting student performance categories using ensemble methods (Random Forest, Decision Tree, Logistic Regression) with interactive Chart.js visualizations.',
+    tech: ['Django', 'scikit-learn', 'Bootstrap', 'Chart.js'],
+    gradient: 'from-tertiary-500 to-primary-500',
+    liveUrl: 'https://ssp-abhi.onrender.com/',
+    githubUrl: 'https://github.com/abhishek-maurya576',
+    image: '/project_predictor.png',
+  },
+  {
+    id: 'auracare',
+    title: 'AuraCare - Mental Wellness App',
+    category: 'Mobile',
+    flagshipBadge: 'Gemini AI Powered',
+    description: 'Comprehensive mental wellness Flutter app with liquid glass-morphism UI, AI-driven mood tracking, meditation features, and community support powered by Google Gemini.',
+    tech: ['Flutter', 'Firebase', 'Google Gemini', 'Cloud Firestore'],
+    gradient: 'from-secondary-500 to-secondary-700',
+    liveUrl: 'https://github.com/abhishek-maurya576/auracare/releases',
+    githubUrl: 'https://github.com/abhishek-maurya576/auracare',
+    image: '/project_auracare.png',
+  },
+  {
+    id: 'linkzy',
+    title: 'Linkzy - Real-time Chat App',
+    category: 'Mobile',
+    flagshipBadge: null,
+    description: 'Modern 1-on-1 chat application with responsive UI and interactive animations. Features real-time messaging, profile pictures, and seamless user experience.',
+    tech: ['Flutter', 'Firebase', 'Cloud Firestore', 'Provider'],
+    gradient: 'from-tertiary to-primary-400',
+    liveUrl: 'https://github.com/abhishek-maurya576/linkzy/releases',
+    githubUrl: 'https://github.com/abhishek-maurya576/linkzy',
+    image: '/project_linkzy.png',
+  },
+]
 
 const Projects = React.memo(function Projects() {
+  const [selectedCategory, setSelectedCategory] = useState('All')
   const [hoveredProject, setHoveredProject] = useState(null)
-  const projects = [
-    {
-      title: 'Pronunex',
-      description: 'AI-driven pronunciation improvement platform with phoneme-level speech analysis using Wav2Vec2 and cosine similarity scoring. Features adaptive practice, real-time feedback, and interactive progress dashboards.',
-      tech: ['React', 'Django', 'PostgreSQL', 'Wav2Vec2', 'AI/NLP'],
-      gradient: 'from-primary-500 to-tertiary-500',
-      link: 'https://pronunex.iabhishek.in',
-      image: '/project_pronunex.png',
-    },
-    {
-      title: 'AgriVision',
-      description: 'Gen AI Hackathon 2025 Winner — AI-powered crop disease detection platform. Engineered a custom + LLM pipeline converting crop-disease predictions into natural-language treatment recommendations.',
-      tech: ['Flask', 'LLM', 'Gen AI', 'Python'],
-      gradient: 'from-emerald-500 to-primary-500',
-      link: 'https://github.com/abhishek-maurya576',
-      image: '/project_agrivision.png',
-    },
-    {
-      title: 'ForensicFlow',
-      description: 'Advanced digital forensics platform for analyzing Universal Forensic Data Reports (UFDR). Built for Smart India Hackathon 2025 with AI-powered insights using Google Gemini and OpenAI GPT.',
-      tech: ['Django', 'React', 'PostgreSQL', 'Celery', 'TailwindCSS'],
-      gradient: 'from-primary-600 to-primary-400',
-      link: 'https://forensicflow.vercel.app/',
-      image: '/project_forensicflow.png',
-    },
-    {
-      title: 'Student Performance Predictor',
-      description: 'ML-powered Django application predicting student performance categories using ensemble methods (Random Forest, Decision Tree, Logistic Regression) with interactive Chart.js visualizations.',
-      tech: ['Django', 'scikit-learn', 'Bootstrap', 'Chart.js'],
-      gradient: 'from-tertiary-500 to-primary-500',
-      link: 'https://ssp-abhi.onrender.com/',
-      image: '/project_predictor.png',
-    },
-    {
-      title: 'AuraCare - Mental Wellness App',
-      description: 'Comprehensive mental wellness Flutter app with liquid glass-morphism UI, AI-driven mood tracking, meditation features, and community support powered by Google Gemini.',
-      tech: ['Flutter', 'Firebase', 'Google Gemini', 'Cloud Firestore'],
-      gradient: 'from-secondary-500 to-secondary-700',
-      link: 'https://github.com/abhishek-maurya576/auracare/releases',
-      image: '/project_auracare.png',
-    },
-    {
-      title: 'Linkzy - Real-time Chat App',
-      description: 'Modern 1-on-1 chat application with beautiful UI and interactive animations. Features real-time messaging, profile pictures, and seamless user experience.',
-      tech: ['Flutter', 'Firebase', 'Cloud Firestore', 'Provider'],
-      gradient: 'from-tertiary to-primary-400',
-      link: 'https://github.com/abhishek-maurya576/linkzy/releases',
-      image: '/project_linkzy.png',
-    },
-  ]
+
+  // Filter project cards according to active category pill
+  const filteredProjects = useMemo(() => {
+    if (selectedCategory === 'All') return PROJECTS_DATA
+    return PROJECTS_DATA.filter((project) => project.category === selectedCategory)
+  }, [selectedCategory])
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
         delayChildren: 0.1,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { y: 80, opacity: 0, scale: 0.9 },
+    hidden: { y: 40, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99]
+        duration: 0.6,
+        ease: [0.6, -0.05, 0.01, 0.99],
       },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.92,
+      transition: { duration: 0.3 },
     },
   }
 
   return (
     <section id="projects" className="py-24 bg-transparent relative overflow-hidden">
-      {/* Section divider */}
+      {/* Section divider line */}
       <div className="section-divider absolute top-0" />
 
-      {/* Background decoration */}
-      <motion.div
-        className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ duration: 2 }}
-      >
+      {/* Background ambient glow */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
         <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-bl from-primary-600/10 to-secondary/8 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-tr from-secondary/8 to-tertiary/8 rounded-full blur-3xl" />
-      </motion.div>
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
+          {/* Section Heading */}
           <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl font-display font-bold text-frost-text mb-4"
           >
-            Featured <motion.span
-              className="gradient-text"
-              whileHover={{
-                scale: 1.05,
-              }}
+            Featured{' '}
+            <motion.span
+              className="gradient-text inline-block"
+              whileHover={{ scale: 1.05 }}
             >
               Projects
             </motion.span>
@@ -123,122 +169,155 @@ const Projects = React.memo(function Projects() {
 
           <motion.p
             variants={itemVariants}
-            className="text-frost-text-secondary text-lg mb-12 max-w-2xl"
+            className="text-frost-text-secondary text-lg mb-8 max-w-2xl leading-relaxed"
           >
-            A collection of my recent work showcasing my skills in web development, AI, and content creation.
+            Production applications and AI pipelines engineered for scalability, real-world utility, and clean architecture.
           </motion.p>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <motion.article
-                key={index}
-                variants={itemVariants}
-                onHoverStart={() => setHoveredProject(index)}
-                onHoverEnd={() => setHoveredProject(null)}
-                whileHover={{
-                  y: -8,
-                  transition: { duration: 0.4, ease: "easeOut" }
-                }}
-                className="group relative overflow-hidden rounded-2xl bg-glacial-pearl border border-silver-drift/50 cursor-pointer hover:border-primary-600/30 transition-colors duration-300"
-              >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.6 }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-glacial-pearl via-glacial-pearl/50 to-transparent" />
+          {/* Category Filter Pills */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap items-center gap-2 mb-12"
+          >
+            {CATEGORIES.map((category) => {
+              const isSelected = selectedCategory === category
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setSelectedCategory(category)}
+                  className={`relative px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+                    isSelected
+                      ? 'text-frost-veil'
+                      : 'text-frost-text-secondary hover:text-frost-text border border-silver-drift/50 hover:border-primary-600/40 bg-frost-veil/40 backdrop-blur-md'
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeCategoryPill"
+                      className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-500 rounded-full shadow-md shadow-primary-600/25"
+                      initial={false}
+                      transition={{ type: 'spring', stiffness: 420, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{category}</span>
+                </button>
+              )
+            })}
+          </motion.div>
 
-                  {/* Gradient top bar */}
-                  <motion.div
-                    className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${project.gradient}`}
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2, duration: 0.8 }}
-                  />
-                </div>
+          {/* Responsive Projects Grid */}
+          <motion.div layout className="grid md:grid-cols-2 gap-8">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => {
+                const badgeClass = BADGE_COLORS[project.gradient] || ''
 
-                {/* Content */}
-                <div className="p-6 pt-2">
-                  {/* Hover glow effect */}
-                  <AnimatePresence>
-                    {hoveredProject === index && (
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-b from-primary-500/3 to-transparent rounded-2xl pointer-events-none"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
-                  </AnimatePresence>
-
-                  <motion.h3
-                    className="text-2xl font-display font-bold text-frost-text mb-3 relative z-10"
+                return (
+                  <motion.article
+                    key={project.id}
+                    layout
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    onHoverStart={() => setHoveredProject(project.id)}
+                    onHoverEnd={() => setHoveredProject(null)}
                     whileHover={{
-                      color: "var(--primary-400)",
+                      y: -6,
+                      transition: { duration: 0.35, ease: 'easeOut' },
                     }}
+                    className="group relative overflow-hidden rounded-2xl bg-glacial-pearl border border-silver-drift/50 hover:border-primary-600/40 transition-colors duration-300 flex flex-col justify-between"
                   >
-                    {project.title}
-                  </motion.h3>
+                    {/* Top Media Area */}
+                    <div>
+                      <div className="relative h-52 overflow-hidden bg-frost-veil/70">
+                        <motion.img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.5 }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-glacial-pearl via-glacial-pearl/40 to-transparent" />
 
-                  <motion.p
-                    className="text-frost-text-secondary mb-5 leading-relaxed relative z-10 text-sm"
-                    initial={{ opacity: 0.8 }}
-                    whileHover={{ opacity: 1 }}
-                  >
-                    {project.description}
-                  </motion.p>
+                        {/* Top Accent Gradient Bar */}
+                        <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${project.gradient}`} />
 
-                  <div className="flex flex-wrap gap-2 mb-5 relative z-10">
-                    {project.tech.map((tech, techIndex) => (
-                      <motion.span
-                        key={techIndex}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          delay: index * 0.1 + techIndex * 0.05,
-                          duration: 0.3,
-                          type: "spring",
-                          stiffness: 500
-                        }}
-                        whileHover={{
-                          scale: 1.08,
-                          backgroundColor: "var(--primary-600)",
-                          color: "#09090b",
-                          y: -2
-                        }}
-                        className="px-3 py-1 text-xs font-medium rounded-full bg-silver-drift/30 text-frost-text-secondary border border-silver-drift/50 transition-colors"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
+                        {/* Flagship Badge (Award/Internship) */}
+                        {project.flagshipBadge && (
+                          <div className="absolute top-3 right-3 z-10">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-frost-veil/85 backdrop-blur-md border border-primary-500/40 text-primary-400 shadow-md">
+                              <span className="w-1.5 h-1.5 rounded-full bg-primary-400 animate-pulse" />
+                              {project.flagshipBadge}
+                            </span>
+                          </div>
+                        )}
+                      </div>
 
-                  <motion.a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{
-                      scale: 1.03,
-                      x: 6
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-semibold text-sm relative z-10 group/link"
-                  >
-                    <span>View Project</span>
-                    <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 transition-transform" />
-                  </motion.a>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+                      {/* Content Area */}
+                      <div className="p-6 pt-3">
+                        <motion.h3
+                          className="text-2xl font-display font-bold text-frost-text mb-3"
+                          whileHover={{ color: 'var(--primary-400)' }}
+                        >
+                          {project.title}
+                        </motion.h3>
+
+                        <p className="text-frost-text-secondary mb-5 leading-relaxed text-sm">
+                          {project.description}
+                        </p>
+
+                        {/* Tech Stack Badges */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {project.tech.map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className={`tech-badge ${badgeClass}`}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Dual Action Buttons Footer */}
+                    <div className="px-6 pb-6 pt-2 border-t border-silver-drift/20 flex flex-wrap items-center gap-3">
+                      {/* Live Demo or Release Link */}
+                      {project.liveUrl && (
+                        <motion.a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.04 }}
+                          whileTap={{ scale: 0.96 }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-primary-600 to-primary-500 text-frost-veil font-semibold text-xs shadow-md shadow-primary-600/20 hover:shadow-lg transition-all"
+                        >
+                          <span>{project.category === 'Mobile' ? 'Download APK' : 'Live Demo'}</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </motion.a>
+                      )}
+
+                      {/* Source Code GitHub Link */}
+                      {project.githubUrl && (
+                        <motion.a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.04 }}
+                          whileTap={{ scale: 0.96 }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-silver-drift/70 bg-white/5 hover:bg-white/10 text-frost-text text-xs font-semibold hover:border-primary-600/40 transition-colors"
+                        >
+                          <GitHubIcon className="w-3.5 h-3.5" />
+                          <span>Source Code</span>
+                        </motion.a>
+                      )}
+                    </div>
+                  </motion.article>
+                )
+              })}
+            </AnimatePresence>
+          </motion.div>
         </motion.div>
       </div>
     </section>
